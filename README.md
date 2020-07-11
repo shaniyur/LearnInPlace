@@ -1,1 +1,1 @@
-# SummerHacks-LearningAlliances
+# LearnInPlace
