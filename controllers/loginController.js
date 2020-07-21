@@ -1,5 +1,10 @@
 const fs = require('fs');
 const User = require('../models/User');
+const mongoose = require('mongoose');
+
+//connect to database
+const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(URI, { useNewUrlParser: true , useUnifiedTopology: true }, () => {console.log("DB connected");});
 
 function checkFormat(username, password) {
 
