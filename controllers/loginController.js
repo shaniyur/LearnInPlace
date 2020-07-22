@@ -7,7 +7,7 @@ const Tutor = require('../models/Tutor');
 const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?retryWrites=true&w=majority";
 mongoose.connect(URI, { useNewUrlParser: true , useUnifiedTopology: true }, () => {console.log("DB connected");});
 
-function checkBasicFormat(username, password) {
+function checkFormat(username, password) {
     let usernameResult = "";
     let passwordResult = "";
     if (username.length < 4) {
@@ -21,34 +21,58 @@ function checkBasicFormat(username, password) {
     return [usernameResult, passwordResult]
 }
 
-function checkFormat(username, password) {
-    console.log('endpoint - checkFormat');
-
-    let [usernameResult, passwordResult] = checkBasicFormat(username, password);
-    res.status(200);
-    return res.json({
-        isUsernameValid: (usernameResult === ""),
-        isPasswordValid: (passwordResult === ""),
-        usernameFormatError: usernameResult,
-        passwordFormatError: passwordResult
-    });
-};
-
 function checkExistence(username, password) {
     console.log('endpoint - checkExistance');
     
-    const studentFromDb = await Student.findOne({ email: username }).exec();
-
+    Student.findStudent(username, password, function (result) {
+        res.status(200);
+        return res.json({exist: result[0], match: result[1]});
+    });
 
 
 };
 
 exports.register = function (req, res) {
     // check the request for valid data
-    checkFormat(req.query.username, req.query.password);
-    //check if the user exists in the database
+    if (req.body.username == undefined || req.body.password == undefined) {
+        res.status(400);
+        return res.json({
+          message: "Need body params: username and password"
+        })
+      }
 
-    // register user to the db
+    const username = req.body.username;
+    const password = req.body.password;
+
+    let [usernameResult, passwordResult] = checkFormat(username, password);
+    if (!(usernameResult === "" && passwordResult === "")) {
+        res.status(200);
+        return res.json( {
+            validFormat: false,
+            result: 'fail',
+            message: 'Username or password has invalid format'
+        });
+    }
+
+    // check if the user exists in the database and register into the db
+    Student.findStudent(username, password, function(result) {
+        if (result[0] === false && result[1] === false){
+            Student.addStudent(req, function(err) {
+                if (err) {
+                    console.log("error occurred when calling loginController.register()");
+                } else {
+                    res.json({validFormat: true,
+                        result: 'success',
+                        message: 'New user created.'});
+                }
+            })
+        } else {
+            res.status(200);
+            return res.json({validFormat:true,
+                result: 'fail',
+                message:'User already exists'});
+        }
+    });
 };
 
 exports.login = function (req, res) {
