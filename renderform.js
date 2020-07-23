@@ -17,8 +17,9 @@ $.fn.serializeObject = function()
 
 $(function() {
     $('form').submit(function() {
-        const data = $('#result').text(JSON.stringify($('form').serializeObject()));
+        //const data = $('#result').text(JSON.stringify($('form').serializeObject()));
         // call to back end
+        const data = JSON.stringify($('form').serializeObject());
         $.post('/tutorsubmit', data, function() {
             console.log('Server got tutor data');
         });
