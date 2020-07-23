@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Tutor Signup Page</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -260,7 +261,12 @@
 		}
 	
 		init();
-	})();</script>
+	})();
+
+	$('#tutorsignups').serializeJSON();
+	</script>
+	
+
 </body>
 
 </html>
