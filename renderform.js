@@ -17,8 +17,14 @@ $.fn.serializeObject = function()
 
 $(function() {
     $('form').submit(function() {
-        $('#result').text(JSON.stringify($('form').serializeObject()));
+        const data = $('#result').text(JSON.stringify($('form').serializeObject()));
+        // call to back end
+        $.post('/tutorsubmit', data, function() {
+            console.log('Server got tutor data');
+        });
         //alert(JSON.stringify($('form').serializeObject()));
+        // if success redirect them to the thankyou page
+        $(location).attr('href', './tutorthankyou.html')
         return false;
     });
 });

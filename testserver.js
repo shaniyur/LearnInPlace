@@ -17,11 +17,17 @@ app.get(/^(.+)$/, function(req,resp) {
     resp.sendFile(req.params[0], {root:path.join(__dirname)});
 })
 
-app.post('/tutorsignups.html', function(req, resp) {
+// change to get
+app.get('/tutorsignups', function(req, resp) {
     console.log(req.params[0] + 'POST');
     resp.end(JSON.stringify(req.body));
     console.log(JSON.stringify(req.body));
     return resp.redirect('/tutorthankyou.html');
+})
+//whatever comes from is a post 
+app.post('/tutorsubmit', function(req, resp) {
+    console.log('Data:' req.body);
+    resp.json({message: 'message recieved!!!'})
 })
 
 // app.post(/^(.+)$/, function(req, resp) {
