@@ -5,7 +5,7 @@ var app = express();
 app.use('/cssFiles',express.static(__dirname + '/testhomepg/testhomepg/'));
 
 app.get('/', function(req, resp) {
-    resp.sendFile('home.html', {root:path.join(__dirname, '../learningalliance/testhomepg/testhomepg')});
+    resp.sendFile('home.html', {root:path.join(__dirname, '../LearnInPlace/testhomepg/testhomepg')});
 })
 
 app.get(/^(.+)$/, function(req,resp) {
