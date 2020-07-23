@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema
-const studentSchema = new Schema({
+const mongoose = require('mongoose');
+
+const studentSchema = new mongoose.Schema({
     firstName: { type: String, required: true }, 
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -17,7 +17,7 @@ const studentSchema = new Schema({
     duration: { type: String },
     sessionFreq: { type: String },
     eligibilityForFreeTutor: { type: String },
-    studentId: { type: String },
+    uploadedStudentId: { type: String },
     status: {
         type: String,
         index: true
@@ -25,7 +25,7 @@ const studentSchema = new Schema({
 });
 
 studentSchema.statics.addStudent = function addStudent(reqBody, next) {
-    let StudentModel = mongoose.model("Student", studentSchema);
+    let StudentModel = mongoose.model('student', studentSchema);
     let student = new StudentModel({
         firstName: reqBody.body.firstName, 
         lastName: reqBody.body.lastName,
@@ -39,11 +39,11 @@ studentSchema.statics.addStudent = function addStudent(reqBody, next) {
         school: reqBody.body.school,
         grade: reqBody.body.grade,
         subjects: reqBody.body.subjects,
-        reasonForTutor: reqBody.body.reasonForTutor,
+        reasonForTutor: reqBody.body.reason,
         duration: reqBody.body.duration,
-        sessionFreq: reqBody.body.sessionFreq,
-        eligibilityForFreeTutor: reqBody.body.eligibilityForFreeTutor,
-        studentId: reqBody.body.studentId,
+        sessionFreq: reqBody.body.session,
+        eligibilityForFreeTutor: reqBody.body.eligibility,
+        uploadedStudentId: reqBody.body.studentId,
         status: "ok"
     });
     student.save(function(err) {
@@ -52,27 +52,26 @@ studentSchema.statics.addStudent = function addStudent(reqBody, next) {
             console.log(err);
             next(err);
         } else {
-            console.log("successfully add new user: " + username);
+            console.log("successfully add new user: " + reqBody.body.email);
             next(null);
         }
     });
 };
 
-studentSchema.statics.findStudent = function findStudent(username, password, next) {
-    this.findOne({'email': username}, function (err, user) {
+studentSchema.statics.findStudent = function findStudent(username, next) {
+    this.findOne({'username': username}, function (err, user) {
         if (err) {
             // handle error
             console.log("error occurred when calling findUser()");
             console.log(err);
-        }
-        console.log('findUser callback');
+        }        
         if (user) {
             // check password - hashed
-            next([true, match]);
+            next([true, true]);
         } else {
             next([false, false]);
         }
     });
 };
 
-module.exports = mongoose.model("Student", studentSchema);
+module.exports = mongoose.model('student', studentSchema);
