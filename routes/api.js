@@ -15,7 +15,7 @@ const loginController = require('../controllers/loginController');
 //     res.json(userModel);
 // })
 
-route.post('/student/register', loginController.register);
-// route.post('/tutor/register', loginController.register);
+route.post('/student/register', loginController.registerStudent);
+route.post('/tutor/register', loginController.registerTutor);
 
 module.exports = route;

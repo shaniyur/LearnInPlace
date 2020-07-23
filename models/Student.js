@@ -48,7 +48,7 @@ studentSchema.statics.addStudent = function addStudent(reqBody, next) {
     });
     student.save(function(err) {
         if (err) {
-            console.log("error occurred when calling addUser()");
+            console.log("error occurred when calling addStudent()");
             console.log(err);
             next(err);
         } else {

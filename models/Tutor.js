@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema
-const tutorSchema = new Schema({
-    tutorId: {type: String, required: true, unique: true},
+
+const tutorSchema = new mongoose.Schema({
+    // tutorId: {type: String, required: true, unique: true},
     firstName: { type: String, required: true }, 
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -24,8 +24,8 @@ const tutorSchema = new Schema({
     }
 });
 
-tutorSchema.statics.addtutor = function addtutor(reqBody, next) {
-    let tutorModel = mongoose.model("tutor", tutorSchema);
+tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
+    let tutorModel = mongoose.model('tutor', tutorSchema);
     let tutor = new tutorModel({
         firstName: reqBody.body.firstName, 
         lastName: reqBody.body.lastName,
@@ -47,27 +47,26 @@ tutorSchema.statics.addtutor = function addtutor(reqBody, next) {
     });
     tutor.save(function(err) {
         if (err) {
-            console.log("error occurred when calling addUser()");
+            console.log("error occurred when calling addTutor()");
             console.log(err);
             next(err);
         } else {
-            console.log("successfully add new user: " + username);
+            console.log("successfully add new user: " + reqBody.body.email);
             next(null);
         }
     });
 };
 
-tutorSchema.statics.findtutor = function findtutor(username, password, next) {
+tutorSchema.statics.findTutor = function findtutor(username, next) {
     this.findOne({'username': username}, function (err, user) {
         if (err) {
             // handle error
             console.log("error occurred when calling findUser()");
             console.log(err);
-        }
-        console.log('findUser callback');
+        }        
         if (user) {
             // check password - hashed
-            next([true, match]);
+            next([true, true]);
         } else {
             next([false, false]);
         }
