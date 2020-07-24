@@ -14,7 +14,8 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "tester": "nodemon loadFiles.js"
   },
   "repository": {
     "type": "git",
