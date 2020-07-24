@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser());
 // on server this will be http://localhost:post/cssFiles
 app.use('/cssFiles',express.static(__dirname + '/testhomepg/testhomepg/'));
-
+//app.use('/images',express.static(__dirname + '/studentsignup/'));
 app.get('/', function(req, resp) {
     resp.sendFile('home.html', {root:path.join(__dirname, '../learningalliance/testhomepg/testhomepg')});
 })
@@ -31,6 +31,10 @@ app.post('/tutorsubmit', function(req, resp) {
     resp.json({message: 'tutor message recieved!!!'})
 })
 
+app.post('/studentsubmit', function(req,resp) {
+    //console.log('Data:' + JSON.stringify(req.body));
+    resp.json({message: 'student message recieved!!!'})
+})
 
 app.listen(3000, function() {
     console.log('listening at port 3000');
