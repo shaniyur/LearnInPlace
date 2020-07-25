@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
+const path = require('path');
+const crypto = require('crypto');
+const Grid = require('gridfs-stream');
+const GridFsStorage = require('multer-gridfs-storage');
+const multer = require('multer');
 
 const tutorSchema = new mongoose.Schema({
-    // tutorId: {type: String, required: true, unique: true},
     firstName: { type: String, required: true }, 
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -25,8 +29,9 @@ const tutorSchema = new mongoose.Schema({
 });
 
 tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
-    let tutorModel = mongoose.model('tutor', tutorSchema);
-    let tutor = new tutorModel({
+    let TutorModel = mongoose.model('tutor', tutorSchema);
+    let username = reqBody.body.email;
+    let tutor = new TutorModel({
         firstName: reqBody.body.firstName, 
         lastName: reqBody.body.lastName,
         username: reqBody.body.email,
@@ -73,4 +78,4 @@ tutorSchema.statics.findTutor = function findtutor(username, next) {
     });
 };
 
-module.exports = mongoose.model("Tutor", tutorSchema);
+module.exports = mongoose.model('tutor', tutorSchema);

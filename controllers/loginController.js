@@ -17,10 +17,11 @@ function checkFormat(username, password) {
 }
 
 exports.registerTutor = function(req, res) {
+    console.log("Registering Tutor");
     // check the request for valid data
     let user = req.body;
     if (user.email == undefined || user.password == undefined || user.firstName == undefined || user.lastName == undefined) {
-        console.log(user.email);
+        console.log("Email:" + user.email);
         res.status(400);
         return res.json({
           message: "One or more body params are missing"
@@ -59,6 +60,7 @@ exports.registerTutor = function(req, res) {
 }
 
 exports.registerStudent = function (req, res) {
+    console.log("Registering student");
     // check the request for valid data
     let user = req.body;
     if (user.email == undefined || user.password == undefined || user.firstName == undefined || user.lastName == undefined) {
