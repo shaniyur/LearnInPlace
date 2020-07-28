@@ -38,7 +38,7 @@ $(function() {
         //  console.log("form submit works")
         // }});
         
-        $(location).attr('href', './tutorthankyou.html')
+        //$(location).attr('href', './tutorthankyou.html')
         return false;
     });
 });
