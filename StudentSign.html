@@ -1,0 +1,143 @@
+<html>
+  <script src="jquery-1.6.1.js"></script>
+<script src="app.js"></script>
+    <body>
+      <form  action="/Send" method="post" id="form">
+        First Name<input type="textbox" name="Fname" required><br>
+        Last Name<input type="textbox" name="Lname" required><br>
+        Gender<input type="textbox" name="Gender" required><br>
+        Email<input type="textbox" name="Email" required><br>
+        City<input type="textbox" name="City" required><br>
+
+        <div id="rad1">
+           <label>Grade</label> <br>
+           6th grade<input type="radio"><br>
+           7th grade<input type="radio"><br>
+           8th grade<input type="radio"><br>
+</div>
+
+<div id="chk2">
+           <label>Subjects</label>
+           English<input type="checkbox"><br>
+           Maths<input type="checkbox"><br>
+           Science<input type="checkbox"><br>
+
+           </div>
+
+           <label>Reasons for getting tutoring</label><br>
+           Currently struggling at grade level
+<div id="chk1">
+<input type="checkbox"><br>
+Extra studies at grade level<input type="checkbox"><br>
+Study ahead for next grade<input type="checkbox"><br>
+Interested in learning advanced topics way above my grade level<input type="checkbox"><br>
+
+</div>
+
+<div name="radbtn">
+           <label>Duration</label> 
+           1-3 months<input type="radio" name="radbtn"><br>
+           3-6 months<input type="radio" name="radbtn"><br>
+           6-12 months<input type="radio" name="radbtn"><br>
+           12+ months<input type="radio" name="radbtn"><br>
+</div>
+           <label>Sessions Frequency<input type="textbox"> </label>
+
+           <label>
+            Do any of these apply to you?
+            </label>
+
+            <table id="imgTable" class="table">
+              
+                  <tr>
+                      <td>One or more of my The student attends a Title 1 School <input type="checkbox" >  </td>
+
+                      <td>The student receives free lunch at school <input type="checkbox" >  </td>
+
+                      <td>The student receives reduced-price lunch at school<input type="checkbox" ><br></td>
+                        <td>The student is a foster child<input type="checkbox" ></td>
+                          <td>The student is homeless<input type="checkbox" ></td>
+                            <td>The family is on or qualifies for food stamps<input type="checkbox" ></td>
+                              <td> Parents jobs are impacted by COVID  <input type="checkbox" ></td>
+                                <td>Other financial hardship <input type="checkbox" ></td>
+                  </tr>
+             
+          </table>
+           
+           
+          </div>
+            <br>
+            <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)">
+  <br>
+  <br><input type="submit" name="SubmitBtn" id="SubmitBtn">
+  
+<br>
+<img id="output" width="200" />
+<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+<p><label for="file" style="cursor: pointer;"></label></p>
+<p><img id="output" width="200" /></p>
+
+<script>
+var loadFile = function(event) {
+  var image = document.getElementById('output');
+  image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
+<!-- <script>
+$("#SubmitBtn").click(function (event) {
+    event.preventDefault();
+    var searchIDs = $("#imgTable input:checkbox:checked").map(function () {
+        return $(this).val();
+    }).get();
+    console.log("selected::::" + searchIDs);
+    $.ajax({
+       url:'/Send',type:'post',
+       data:{searchid:searchIDs},
+       success:function(response){
+          console.log(response);
+       }
+    });
+});
+  </script> -->
+
+<script>
+  var radios = document.getElementsByName('rbtn');
+
+for (var i = 0, length = radios.length; i < length; i++) {
+    if (radios[i].checked) {
+        
+       console.log("checked");
+
+     
+    }
+}
+</script>
+
+<script>
+var appended = $('<div />', {
+  'id': 'appended',
+  'text': 'Appended content'
+});
+$('input:radio[name="radbtn"]').change(function() {
+  if ($(this).val() == 'Yes') {
+   console.log("yep! done");
+  }
+});
+</script> 
+<!-- <script>
+$(function() {
+    $('form').submit(function() {
+       
+        const data = JSON.stringify($('form').serializeObject());
+        $.post('/test', data, function() {
+            console.log('Server got tutor data');
+        });
+       
+    });
+});
+</script> -->
+</form>
+           
+
+    </body>
+</html>
