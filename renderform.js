@@ -22,15 +22,21 @@ $(function() {
         var data = $.extend({}, obj1, obj2);
 
         
-        // $.post('/tutorsubmit', data, function() {
-        //     console.log('Server got tutor data');
+        // $.post('/tutorsubmit', data, function(data) {
+        //     alert('successdfsfdsfds');
         // });
+
+        $.post('api/tutor/register', data, function(data) {
+            alert('successdfsfdsfds');
+        });
+
         //alert(JSON.stringify($('form').serializeObject()));
         // if success redirect them to the thankyou page
-        $.ajax({type: 'POST', url: "/register", data,
-         success: function(result){
-         console.log(result)
-        }});
+        // $.ajax({type: 'POST', url: "/tutorsubmit", data,
+        //  success: function(result){
+        //  console.log(result)
+        //  console.log("form submit works")
+        // }});
         
         $(location).attr('href', './tutorthankyou.html')
         return false;
