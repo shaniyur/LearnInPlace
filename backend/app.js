@@ -22,6 +22,7 @@ app.use(bodyParser());
 
 // on server this will be http://localhost:post/cssFiles
 app.use('/cssFiles',express.static(path.join(__dirname + '../../testhomepg/testhomepg/')));
+app.use(express.static('./studentsignup'))
 //app.use('/images',express.static(__dirname + '/studentsignup/'));
 //\Users\topaz\Documents\learningalliance\backend\routes
 
@@ -57,9 +58,10 @@ app.post('/tutorsubmit', function(req, resp) {
     //resp.sendFile('tutorthankyou.html', {root:path.join(__dirname)})
 })
 
-app.get('/tutorthankyou.html', function(req, resp) {
+app.get('/tutorthankyou', function(req, resp) {
     console.log("tutor thankyou sent")
-    resp.sendFile('tutorthankyou.html', {root:path.join(__dirname, '../')})
+    //resp.sendFile('tutorthankyou.html', {root:path.join(__dirname, '../')})
+    resp.sendFile('tutorthankyou.html', { root: './' });
 })
 
 const port = process.env.PORT || '3000';
