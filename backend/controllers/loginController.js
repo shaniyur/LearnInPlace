@@ -18,6 +18,7 @@ function checkFormat(username) {
 
 exports.registerTutor = function(req, res) {
     console.log("Registering Tutor");
+    console.log('Data:' + JSON.stringify(req.body));
     // check the request for valid data
     let user = req.body;
     if (user.tutor_email == undefined || user.first_tutor_name == undefined || user.last_tutor_name == undefined) {
@@ -52,6 +53,7 @@ exports.registerTutor = function(req, res) {
             })
         } else {
             res.status(200);
+            console.log("User exists");
             return res.json({validFormat:true,
                 result: 'fail',
                 message:'User already exists'});

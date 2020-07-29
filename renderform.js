@@ -18,21 +18,44 @@ $.fn.serializeObject = function()
 $(function() {
     $('form').submit(function() {
         var obj1 = $('form').serializeObject();
-        var obj2 = {person: "tutor"};
+        var obj2 = {"person" : "tutor"};
         var data = $.extend({}, obj1, obj2);
-
+        console.log(data)
+        console.log(JSON.stringify(data))
         
-        // $.post('/tutorsubmit', data, function(data) {
+        
+        // $.post('/tutorsubmit', data, function(JSON.stringify(data)) {
         //     alert('successdfsfdsfds');
         // });
 
-        $.post('api/tutor/register', data, function(data) {
-            alert('successdfsfdsfds');
-        });
+        // $.post('api/tutor/register', JSON.stringify(data), function(JSON.stringify(data)) {
+        //     alert('successdfsfdsfds');
+        // });
+
+        $.post('api/tutor/register', data, function(resp, data) {
+            console.log(JSON.stringify(data));
+            console.log(JSON.stringify(resp));
+            if (resp.result === 'success') {
+                console.log("sucess")
+                alert(resp.message);
+
+            }
+            else if (resp.result === 'fail') {
+                console.log('fail')
+                alert(resp.message);
+            }
+        }).fail(function() {
+            alert( "Error registering" );
+          });
+
+        // $.post('/api/', data, function(data) {
+        //     alert('successdfsfdsfds');
+        // });
+        
 
         //alert(JSON.stringify($('form').serializeObject()));
         // if success redirect them to the thankyou page
-        // $.ajax({type: 'POST', url: "/tutorsubmit", data,
+        // $.ajax({type: 'POST', url: "/api/tutor/register", data,
         //  success: function(result){
         //  console.log(result)
         //  console.log("form submit works")

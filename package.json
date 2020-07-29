@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "frontend": "nodemon testserver.js",
-    "server": "nodemon app.js"
+    "server": "nodemon backend/app.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.9.26",
     "multer": "^1.4.2",
-    "multer-gridfs-storage": "^4.2.0"
+    "multer-gridfs-storage": "^4.2.0",
+    "nodemon": "^2.0.4"
   }
 }

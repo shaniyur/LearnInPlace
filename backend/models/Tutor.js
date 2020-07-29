@@ -14,12 +14,12 @@ const tutorSchema = new mongoose.Schema({
     gender: { type: String },
     school: { type: String },
     followingSemesterGrade: { type: String },
-    subjects: { type: String },
+    subjects: { type: Array },
     experience: { type: String },
     availableHours: { type: Number },
     numberOfStudents: { type: String },
     duration: { type: String },
-    reasonToTutor: { type: String },
+    reasonToTutor: { type: Array },
     comments: { type: String },    
     transcript: { type: String },
     cv: { type: String },
@@ -58,7 +58,7 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
             console.log(err);
             next(err);
         } else {
-            console.log("successfully add new user: " + reqBody.body.email);
+            console.log("successfully add new user: " + reqBody.body.tutor_email);
             next(null);
         }
     });
