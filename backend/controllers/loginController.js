@@ -10,17 +10,21 @@ function checkFormat(username, password) {
     if (username.length < 4) {
         usernameResult = "Username should be at least 4 characters"
     }
-    if (password.length < 4) {
-        passwordResult = "Password should be at least 4 characters"
-    } 
-    return [usernameResult, passwordResult]
+    // if (password.length < 4) {
+    //     passwordResult = "Password should be at least 4 characters"
+    // } 
+    // return [usernameResult, passwordResult]
+    return [usernameResult]
+
 }
 
 exports.registerTutor = function(req, res) {
     console.log("Registering Tutor");
+    console.log('Data:' + JSON.stringify(req.body));
     // check the request for valid data
     let user = req.body;
-    if (user.email == undefined || user.password == undefined || user.firstName == undefined || user.lastName == undefined) {
+    // if (user.email == undefined || user.password == undefined || user.firstName == undefined || user.lastName == undefined) {
+    if (user.email == undefined || user.firstName == undefined || user.lastName == undefined) {
         console.log("Email:" + user.email);
         res.status(400);
         return res.json({
@@ -28,8 +32,10 @@ exports.registerTutor = function(req, res) {
         })
     }
 
-    let [usernameResult, passwordResult] = checkFormat(user.email, user.password);
-    if (!(usernameResult === "" && passwordResult === "")) {
+    // let [usernameResult, passwordResult] = checkFormat(user.email, user.password);
+    let [usernameResult] = checkFormat(user.email);
+    //if (!(usernameResult === "" && passwordResult === "")) {
+    if (!(usernameResult === "")) {
         res.status(200);
         return res.json( {
             validFormat: false,

@@ -9,7 +9,8 @@ var connectDB = require('./models/Connection');
 connectDB();
 
 app.use(express.json({ extended: false}));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(bodyParser());
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
@@ -31,6 +32,7 @@ app.get('/', function(req, resp) {
 })
 
 app.get('/tutorsignups', function(req,resp) {
+    //console.log('Data:' + JSON.stringify(req.body));
     console.log("tutor signup form works!")
     resp.sendFile('tutorsignups.html', {root:path.join(__dirname, '../')});
 })
@@ -45,14 +47,15 @@ app.get('/renderform.js', function(req, resp) {
     resp.sendFile('renderform.js', {root:path.join(__dirname, '../')})
 })
 
-// app.post('/tutorsubmit', function(req, resp) {
-//     console.log('Data:' + JSON.stringify(req.body));
-//     resp.json({message: 'tutor message recieved!!!'})
-//     //resp.send('hsahsaj')
-//     //resp.redirect('/tutor/register');
-//     // this is the header issue
-//     //resp.sendFile('tutorthankyou.html', {root:path.join(__dirname)})
-// })
+app.post('/tutorsubmit', function(req, resp) {
+    console.log('Data:' + JSON.stringify(req.body));
+    //resp.redirect('/api/tutor/register');
+    //resp.json({message: 'tutor message recieved!!!'})
+    //resp.send('hsahsaj')
+    //resp.redirect('/tutor/register');
+    // this is the header issue
+    //resp.sendFile('tutorthankyou.html', {root:path.join(__dirname)})
+})
 
 app.get('/tutorthankyou.html', function(req, resp) {
     console.log("tutor thankyou sent")

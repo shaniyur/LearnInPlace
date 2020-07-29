@@ -16,6 +16,10 @@ app.get('/', function(req, resp) {
 })
 
 // this case handles the tutor sign up 
+// app.get(/^(.+)$/, function(req,resp) {
+//     console.log(req.params[0] + ' GET')
+//     resp.sendFile(req.params[0], {root:path.join(__dirname)});
+// })
 app.get(/^(.+)$/, function(req,resp) {
     console.log(req.params[0] + ' GET')
     resp.sendFile(req.params[0], {root:path.join(__dirname)});
@@ -34,5 +38,3 @@ app.post('/tutorsubmit', function(req, resp) {
 app.listen(3000, function() {
     console.log('listening at port 3000');
 })
-
-//module.exports = router;
