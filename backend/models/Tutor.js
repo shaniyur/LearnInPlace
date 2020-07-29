@@ -10,8 +10,9 @@ const tutorSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
-    password:{ type: String, required: true }, 
+    // password:{ type: String, required: true }, 
     gender: { type: String },
+    school: { type: String },
     followingSemesterGrade: { type: String },
     subjects: { type: String },
     experience: { type: String },
@@ -30,24 +31,25 @@ const tutorSchema = new mongoose.Schema({
 
 tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
     let TutorModel = mongoose.model('tutor', tutorSchema);
-    let username = reqBody.body.email;
+    let username = reqBody.body.tutor_email;
     let tutor = new TutorModel({
-        firstName: reqBody.body.firstName, 
-        lastName: reqBody.body.lastName,
-        username: reqBody.body.email,
-        password: reqBody.body.password,
-        email: reqBody.body.email,
+        firstName: reqBody.body.first_tutor_name, 
+        lastName: reqBody.body.last_tutor_name,
+        username: username,
+        // password: reqBody.body.password,
+        email: username,
         gender: reqBody.body.gender,
+        school: reqBody.body.tutor_school,
         followingSemesterGrade: reqBody.body.grade,
-        subjects: reqBody.body.subjects,
-        experience: reqBody.body.experience,
-        availableHours: reqBody.body.hours,
-        numberOfStudents: reqBody.body.students,
+        subjects: reqBody.body.subj,
+        experience: reqBody.body.tutor_exp,
+        availableHours: reqBody.body.tutor_avail,
+        numberOfStudents: reqBody.body.pref,
         duration: reqBody.body.duration,
-        reasonToTutor: reqBody.body.reason,
-        comments: reqBody.body.comments,    
-        transcript: reqBody.body.transcript,
-        cv: reqBody.body.cv,
+        reasonToTutor: reqBody.body.motive,
+        comments: reqBody.body.tutor_message,    
+        // transcript: reqBody.body.transcript,
+        // cv: reqBody.body.cv,
         status: "ok"
     });
     tutor.save(function(err) {
