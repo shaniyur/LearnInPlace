@@ -17,15 +17,28 @@ $.fn.serializeObject = function()
 
 $(function() {
     $('form').submit(function() {
-        //const data = $('#result').text(JSON.stringify($('form').serializeObject()));
-        // call to back end
-        const data = JSON.stringify($('form').serializeObject());
-        $.post('/tutorsubmit', data, function() {
-            console.log('Server got tutor data');
+        var obj1 = $('form').serializeObject();
+        var obj2 = {person: "tutor"};
+        var data = $.extend({}, obj1, obj2);
+
+        
+        // $.post('/tutorsubmit', data, function(data) {
+        //     alert('successdfsfdsfds');
+        // });
+
+        $.post('api/tutor/register', data, function(data) {
+            alert('successdfsfdsfds');
         });
+
         //alert(JSON.stringify($('form').serializeObject()));
         // if success redirect them to the thankyou page
-        $(location).attr('href', './tutorthankyou.html')
+        // $.ajax({type: 'POST', url: "/tutorsubmit", data,
+        //  success: function(result){
+        //  console.log(result)
+        //  console.log("form submit works")
+        // }});
+        
+        //$(location).attr('href', './tutorthankyou.html')
         return false;
     });
 });
