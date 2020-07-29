@@ -31,12 +31,12 @@ app.get('/', function(req, resp) {
 })
 
 app.get('/tutorsignups', function(req,resp) {
-    console.log("sup bitch")
+    console.log("tutor signup form works!")
     resp.sendFile('tutorsignups.html', {root:path.join(__dirname, '../')});
 })
 
 app.get('/studentsignups', function(req,resp) {
-    console.log("sup bitch 2")
+    console.log("student signup form works!")
     resp.sendFile('studentsignups.html', {root:path.join(__dirname, '../studentsignup')});
 })
 
