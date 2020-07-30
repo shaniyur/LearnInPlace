@@ -38,7 +38,7 @@ $(function() {
             if (resp.result === 'success') {
                 console.log("sucess")
                 alert(resp.message);
-
+                window.location.replace('/tutorthankyou');
             }
             else if (resp.result === 'fail') {
                 console.log('fail')
