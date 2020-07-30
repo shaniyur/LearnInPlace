@@ -19,8 +19,9 @@ const connectDB = async() => {
     });
     connect.once('open', () => {
         gfs = Grid(connect.db, mongoose.mongo);
-        gfs.collection('studentIds');
+        gfs.collection('transcripts');
     })
+    console.log("transcripts")
 }
 
 module.exports = connectDB;

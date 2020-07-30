@@ -33,7 +33,7 @@ let gfs;
 conn.once('open', () => {
     // Init stream
     gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection('uploads');
+    gfs.collection('transcripts');
 });
 
 connectDB();
@@ -54,14 +54,14 @@ const storage = new GridFsStorage({
           const filename = buf.toString('hex') + path.extname(file.originalname);
           const fileInfo = {
             filename: filename,
-            bucketName: 'uploads'
+            bucketName: 'transcripts'
           };
           resolve(fileInfo);
         });
       });
     }
   });
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 
 
 // @route GET /
@@ -72,7 +72,7 @@ app.post('/', (req, res) => {
 
 // @route POST /upload
 // @desc Uploads file to DB
-app.post('/upload', upload.single('file'), (req,res) => {
+app.post('/upload', upload.single('tutor_trans'), (req,res) => {
   res.json({ file: req.file});
 });
 

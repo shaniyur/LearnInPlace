@@ -29,6 +29,53 @@ const tutorSchema = new mongoose.Schema({
     }
 });
 
+// var connectDB = require('./models/Connection');
+
+// Mongo connection
+const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?retryWrites=true&w=majority";
+
+// // Create mongo connection
+// const conn = mongoose.createConnection(URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+
+// // Init gfs
+// let gfs;
+
+// conn.once('open', () => {
+//     // Init stream
+//     gfs = Grid(conn.db, mongoose.mongo);
+//     gfs.collection('transcripts');
+// });
+
+// connectDB();
+
+// Create storage engine
+// const storage = new GridFsStorage({
+//     url: URI,
+//     file: (req, file) => {
+//     console.log("process 1");
+
+//       return new Promise((resolve, reject) => {
+//         crypto.randomBytes(16, (err, buf) => {
+//           if (err) { 
+//             return reject(err);
+//           }
+//   console.log("process 2");
+
+//           const filename = buf.toString('hex') + path.extname(file.originalname);
+//           const fileInfo = {
+//             filename: filename,
+//             bucketName: 'transcripts'
+//           };
+//           resolve(fileInfo);
+//         });
+//       });
+//     }
+//   });
+// const upload = multer({ storage });
+
 tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
     let TutorModel = mongoose.model('tutor', tutorSchema);
     let username = reqBody.body.tutor_email;
@@ -59,6 +106,30 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
             next(err);
         } else {
             console.log("successfully add new user: " + reqBody.body.tutor_email);
+            console.log("trying to upload");
+            const storage = new GridFsStorage({
+                url: URI,
+                file: (req, file) => {
+                console.log("process 1");
+            
+                  return new Promise((resolve, reject) => {
+                   
+                    
+                    console.log("process 2");
+            
+                      const filename = "hello";
+                      const fileInfo = {
+                        filename: filename,
+                        bucketName: 'transcripts'
+                      };
+                      resolve(fileInfo);
+                    
+                  });
+                }
+              });
+            const upload = multer({ storage: storage });
+            upload.single('tutor_trans');
+            upload.single(reqBody.body.tutor_trans)
             next(null);
         }
     });
@@ -79,5 +150,6 @@ tutorSchema.statics.findTutor = function findtutor(username, next) {
         }
     });
 };
+
 
 module.exports = mongoose.model('tutor', tutorSchema);

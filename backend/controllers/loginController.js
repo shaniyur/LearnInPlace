@@ -16,7 +16,8 @@ function checkFormat(username) {
     return [usernameResult]
 }
 
-exports.registerTutor = function(req, res) {
+exports.registerTutor = function(req, obj1, res) {
+    console.log("JSON stringify:" + JSON.stringify(obj1.serializeArray()));
     console.log("Registering Tutor");
     console.log('Data:' + JSON.stringify(req.body));
     // check the request for valid data
@@ -28,7 +29,7 @@ exports.registerTutor = function(req, res) {
           message: "One or more body params are missing"
         })
     }
-
+ 
     let [usernameResult] = checkFormat(user.tutor_email);
     if (!(usernameResult === "")) {
         res.status(200);

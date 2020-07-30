@@ -17,11 +17,12 @@ $.fn.serializeObject = function()
 
 $(function() {
     $('form').submit(function() {
-        var obj1 = $('form').serializeObject();
-        var obj2 = {"person" : "tutor"};
-        var data = $.extend({}, obj1, obj2);
-        console.log(data)
-        console.log(JSON.stringify(data))
+        var obj1 = $('form');
+        // var obj2 = {"person" : "tutor"};
+        // var data = $.extend({}, obj1, obj2);
+        var data = $('form').serializeArray();
+        console.log("Raw data:"+data);
+        console.log("Stringified:"+JSON.stringify(data))
         
         
         // $.post('/tutorsubmit', data, function(JSON.stringify(data)) {
@@ -32,13 +33,12 @@ $(function() {
         //     alert('successdfsfdsfds');
         // });
 
-        $.post('api/tutor/register', data, function(resp, data) {
+        $.post('api/tutor/register', data, obj1, function(resp, data) {
             console.log(JSON.stringify(data));
             console.log(JSON.stringify(resp));
             if (resp.result === 'success') {
                 console.log("sucess")
                 alert(resp.message);
-
             }
             else if (resp.result === 'fail') {
                 console.log('fail')
@@ -46,7 +46,7 @@ $(function() {
             }
         }).fail(function() {
             alert( "Error registering" );
-          });
+        });
 
         // $.post('/api/', data, function(data) {
         //     alert('successdfsfdsfds');

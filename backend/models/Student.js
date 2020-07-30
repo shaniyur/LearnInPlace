@@ -83,7 +83,10 @@ studentSchema.statics.findStudent = function findStudent(username, next) {
 
 const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?retryWrites=true&w=majority";
 
-function uploadedStudentId(username, studentId) {
+exports.uploadStudentId = function(data) {
+    let username = data.body.tutor_email;
+    let studentId = data.body.tutor_trans;
+    console.log("New User's data being uploaded: " + username);
     const storage = new GridFsStorage({
         url: URI,
         file: (req, file) => {

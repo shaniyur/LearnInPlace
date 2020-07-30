@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "frontend": "nodemon testserver.js",
-    "server": "nodemon backend/app.js"
+    "server": "nodemon backend/app.js",
+    "tester": "nodemon backend/loadFiles.js"
   },
   "repository": {
     "type": "git",
