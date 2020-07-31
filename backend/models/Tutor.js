@@ -106,30 +106,29 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
             next(err);
         } else {
             console.log("successfully add new user: " + reqBody.body.tutor_email);
-            console.log("trying to upload");
-            const storage = new GridFsStorage({
-                url: URI,
-                file: (req, file) => {
-                console.log("process 1");
+            // const storage = new GridFsStorage({
+            //     url: URI,
+            //     file: (req, file) => {
+            //     console.log("process 1");
             
-                  return new Promise((resolve, reject) => {
+            //       return new Promise((resolve, reject) => {
                    
                     
-                    console.log("process 2");
+            //         console.log("process 2");
             
-                      const filename = "hello";
-                      const fileInfo = {
-                        filename: filename,
-                        bucketName: 'transcripts'
-                      };
-                      resolve(fileInfo);
+            //           const filename = "hello";
+            //           const fileInfo = {
+            //             filename: filename,
+            //             bucketName: 'transcripts'
+            //           };
+            //           resolve(fileInfo);
                     
-                  });
-                }
-              });
-            const upload = multer({ storage: storage });
-            upload.single('tutor_trans');
-            upload.single(reqBody.body.tutor_trans)
+            //       });
+            //     }
+            //   });
+            // const upload = multer({ storage: storage });
+            // upload.single('tutor_trans');
+            // upload.single(reqBody.body.tutor_trans)
             next(null);
         }
     });

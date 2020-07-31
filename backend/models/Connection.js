@@ -19,9 +19,8 @@ const connectDB = async() => {
     });
     connect.once('open', () => {
         gfs = Grid(connect.db, mongoose.mongo);
-        gfs.collection('transcripts');
+        gfs.collection('tutor_files');
     })
-    console.log("transcripts")
 }
 
 module.exports = connectDB;

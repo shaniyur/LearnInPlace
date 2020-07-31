@@ -8,6 +8,6 @@ const bodyParser = require('body-parser')
 route.use(bodyParser())
 
 // route.post('/student/register', loginController.registerStudent);
-//route.post('/tutor/register', loginController.registerTutor);
+route.post('/tutor/register', loginController.registerTutor);
 
 module.exports = route;
