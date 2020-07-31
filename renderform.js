@@ -49,11 +49,12 @@ $(function() {
         for (var pair of fd.entries()) {
             console.log(pair[0]+ ' - ' + pair[1]); 
         }
+
         // this converts it to a json, need to check the files tho, and error for motives
         console.log(JSON.stringify(Object.fromEntries(fd.entries())));
 
         var js = JSON.stringify(Object.fromEntries(fd.entries()));
-        console.log("Let's see: "+ js.tutor_trans)
+        console.log(js.tutor_trans)
 
         // $.post('/tutorsubmit',fd, function(resp, fd) {
         //     console.log(JSON.stringify(fd));
