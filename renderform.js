@@ -78,7 +78,8 @@ $(function() {
         }).fail(function() {
                 alert( "Error registering" );
               });
-        window.location.replace('/tutorthankyou');
+        //window.location.replace('/tutorthankyou');
+        $(location).attr('href', './tutorthankyou')
         
         // $.post('api/tutor/register', data, function(resp, data) {
         //     console.log(JSON.stringify(data));
