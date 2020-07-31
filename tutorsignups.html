@@ -9,8 +9,8 @@
 
 <body>
 	<p>Tutor Signups</p>
-	<form id="tutorsignups" action="api/tutor/register" enctype="multipart/form-data" method="post">
-	<!-- <form id="tutorsignups" action="./tutorthankyou.html" enctype="multipart/form-data" method="post"> -->
+	<!-- <form id="tutorsignups" action="/tutorsubmit" enctype="multipart/form-data" method="post"> -->
+	<form id="tutorsignups" action="./tutorthankyou.html" enctype="multipart/form-data" method="post">
 		<ul>
 			<li>
 				<label for="first_name">First Name:</label>
@@ -130,11 +130,11 @@
 			</li>
 			<li>
 				<label for="transcipt">Please upload your transcript. You can black out everything except name, courses that you want to teach and grade</label>
-				<input type="file" id="transcript" name="tutor_trans" accept="application/pdf" title="Only pdfs are allowed" required>
+				<input type="file" id="transcript" name="files" accept="application/pdf" title="Only pdfs are allowed" required>
 			</li>
 			<li>
 				<label for="cv">Please upload your CV</label>
-				<input type="file" id="cv" name="tutor_cv" accept="application/pdf" title="Only pdfs are allowed" required>
+				<input type="file" id="cv" name="files" accept="application/pdf" title="Only pdfs are allowed" required>
 			</li>
 			<li>
 				<label for="avail">How many hours do you want to tutor in a week:</label>

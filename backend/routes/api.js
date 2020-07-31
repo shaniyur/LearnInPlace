@@ -3,25 +3,11 @@ const route = express.Router();
 const mongoose = require('mongoose');
 const loginController = require('../controllers/loginController');
 
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 // parse application/json
 route.use(bodyParser())
-// // route.post('/student/register', async(req, res) => {
-// //     console.log("Start 1");
-// //     const{firstName, lastName} = req.body;
-// //     let student = {};
-// //     student.firstName = firstName;
-// //     student.lastName = lastName;
-// //     let userModel = new Student(student);
-// //     await userModel.save();
-// //     res.json(userModel);
-// // })
-
-// route.post('/', function(req,resp) {
-//     console.log(JSON.stringify(req.body));
-// })
 
 // route.post('/student/register', loginController.registerStudent);
-route.post('/tutor/register', loginController.registerTutor);
+//route.post('/tutor/register', loginController.registerTutor);
 
 module.exports = route;
