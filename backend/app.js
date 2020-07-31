@@ -62,6 +62,7 @@ app.get('/renderform.js', function(req, resp) {
     resp.sendFile('renderform.js', {root:path.join(__dirname, '../')})
 })
 
+//testing route
 app.post('/tutorsubmit',  upload.array('files', 2), function(req, res) {
     console.log(req.body);
     console.log(req.files)
