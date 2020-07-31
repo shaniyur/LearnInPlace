@@ -37,13 +37,13 @@ $.fn.serializeObject = function()
 
 $(function() {
     $('form').submit(function() {
-        var obj1 = $('form').serializeObject();
-        var obj2 = {"person" : "tutor"};
-        var data = $.extend({}, obj1, obj2);
-        console.log(data);
-        console.log(JSON.stringify(data));
+        // var obj1 = $('form').serializeObject();
+        // var obj2 = {"person" : "tutor"};
+        // var data = $.extend({}, obj1, obj2);
+        // console.log(data);
+        // console.log(JSON.stringify(data));
         // this does creates a formData Object that has the files inside
-        console.log(JSON.stringify($('form').serializeFiles()))
+        // console.log(JSON.stringify($('form').serializeFiles()))
         // checks contents of form data
         var fd = $('form').serializeFiles()
         for (var pair of fd.entries()) {
@@ -51,26 +51,10 @@ $(function() {
         }
 
         // this converts it to a json, need to check the files tho, and error for motives
-        console.log(JSON.stringify(Object.fromEntries(fd.entries())));
+        // console.log(JSON.stringify(Object.fromEntries(fd.entries())));
 
         var js = JSON.stringify(Object.fromEntries(fd.entries()));
-        console.log(js.tutor_trans)
-
-        // $.post('/tutorsubmit',fd, function(resp, fd) {
-        //     console.log(JSON.stringify(fd));
-        //     console.log(JSON.stringify(resp));
-        //     if (resp.result === 'success') {
-        //         console.log("sucess")
-        //         alert(resp.message);
-        //         window.location.replace('/tutorthankyou');
-        //     }
-        //     else if (resp.result === 'fail') {
-        //         console.log('fail')
-        //         alert(resp.message);
-        //     }
-        // }).fail(function() {
-        //     alert( "Error registering" );
-        //   });
+        // console.log(js.tutor_trans)
 
         $.ajax({
             type: "POST",
@@ -80,9 +64,21 @@ $(function() {
             contentType: false, //this is requireded please see answers above
             processData: false, //this is requireded please see answers above
             cache: false, //not sure but works for me without this
-
-        });
-        
+            success: function (resp) {
+                if (resp.result === 'success') {
+                console.log("sucess")
+                alert(resp.message);
+                window.location.replace('/tutorthankyou');
+                }        
+                else if (resp.result === 'fail') {
+                    console.log('fail')
+                    alert(resp.message);
+                }
+            }
+        }).fail(function() {
+                alert( "Error registering" );
+              });
+        window.location.replace('/tutorthankyou');
         
         // $.post('api/tutor/register', data, function(resp, data) {
         //     console.log(JSON.stringify(data));
