@@ -79,11 +79,8 @@ app.post('/tutorfiles', upload.fields([{
         if (req.fileValidationError) {
             res.send(req.fileValidationError);
         }
-        else if (!req.file) {
-            res.send('Please select an image to upload');
-        }
         else {
-            res.send('this shit works!!!');
+            res.send('success');
         }
 })
 

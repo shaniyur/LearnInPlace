@@ -47,41 +47,42 @@ $(function () {
         }
 
         var result = $.post('api/tutor/register', data, function (data, resp) {
-            console.log(JSON.stringify(resp));
-            if (resp === 'success') {
+            if (data.result === 'success') {
                 console.log("response success")
-                return 'success';
+                // --------------------------
+                $.ajax({
+                        type: "POST",
+                        enctype: 'multipart/form-data',
+                        url: '/tutorfiles',
+                        data: fd,
+                        contentType: false, //this is requireded please see answers above
+                        processData: false, //this is requireded please see answers above
+                        cache: false, //not sure but works for me without this
+                        success: function (resp) {
+                            console.log(resp)
+                            if (resp === 'success') {
+                                console.log("Upload success")
+                                window.location.replace('/tutorthankyou');
+                            }
+                            else {
+                                console.log('fail')
+                                alert(resp.message);
+                            }
+                        }
+                    })
+
+                //----------------------------
             }
-            else if (resp === 'fail') {
+            else if (data.result === 'fail') {
                 console.log('fail')
-                alert(resp.message);
+                alert(data.message);
             }
             return JSON.stringify(resp);
-        }).success(function () {
-            console.log("Extended success");
-            $.ajax({
-                type: "POST",
-                enctype: 'multipart/form-data',
-                url: '/tutorfiles',
-                data: fd,
-                contentType: false, //this is requireded please see answers above
-                processData: false, //this is requireded please see answers above
-                cache: false, //not sure but works for me without this
-                success: function (resp) {
-                    if (resp.result === 'success') {
-                        console.log("Upload success")
-                        alert(resp.message);
-                    }
-                    else if (resp.result === 'fail') {
-                        console.log('fail')
-                        alert(resp.message);
-                    }
-                }
-            })
-            window.location.replace('/tutorthankyou');
-        }).fail(function () {
+        })
+        .fail(function () {
             alert("Error registering");
         });
+
         return false;
     });
 });
