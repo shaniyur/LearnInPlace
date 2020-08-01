@@ -63,7 +63,6 @@ const storage = new GridFsStorage({
   });
 const upload = multer({ storage: storage });
 
-
 // @route GET /
 // @desc Loads from
 app.post('/', (req, res) => {
