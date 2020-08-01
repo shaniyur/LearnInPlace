@@ -46,7 +46,7 @@ const storage = new GridFsStorage({
 var upload = multer({ storage: storage });
 
 const tempStorage = multer.diskStorage({
-    destination: 'C:/Users/vaish/Downloads/Prak/LA/LearnInPlace/backend/files',
+    destination: 'C:/Users/vaish/Downloads/Prak/LA/LearnInPlace/backend/tempfiles',
     filename: (req, file, cb) => {
         cb(null, file.originalname)
     }

@@ -1,6 +1,6 @@
 let nodemailer = require('nodemailer');
 let smtpTransport = require('nodemailer-smtp-transport');
-
+let fs = require('fs');
 let myEmail = 'learninplaceteam@gmail.com';
 
 exports.sendFiles = function (req, res) {
@@ -34,7 +34,23 @@ exports.sendFiles = function (req, res) {
             return;
         } else {
             console.log("Email sent" + info.response);
-            // delete files
+            // delete files 
+
+            // delete file named 'sample.txt'
+            fs.unlink('backend/tempfiles/cv_' + username + '.pdf', function (err) {
+                if (err) {
+                    throw err;
+                }
+                // if no error, file has been deleted successfully
+                console.log('Transcript deleted from local!');
+            }); 
+            fs.unlink('backend/tempfiles/transcript_' + username + '.pdf', function (err) {
+                if (err) {
+                    throw err;
+                }
+                // if no error, file has been deleted successfully
+                console.log('CV deleted from local!');
+            }); 
         }
     });
 }
