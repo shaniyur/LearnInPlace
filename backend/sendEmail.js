@@ -21,9 +21,9 @@ exports.sendFiles = function (req, res) {
         text: 'Please find attached tutor details for vetting',
         attachments: [
             {
-                path: 'backend/tempfiles/cv_' + username + '.pdf' 
+                path: './tempfiles/cv_' + username + '.pdf' 
             }, {
-                path: 'backend/tempfiles/transcript_' + username + '.pdf' 
+                path: './tempfiles/transcript_' + username + '.pdf' 
             }
         ]
     };
@@ -37,14 +37,14 @@ exports.sendFiles = function (req, res) {
             // delete files 
 
             // delete file named 'sample.txt'
-            fs.unlink('backend/tempfiles/cv_' + username + '.pdf', function (err) {
+            fs.unlink('./tempfiles/cv_' + username + '.pdf', function (err) {
                 if (err) {
                     throw err;
                 }
                 // if no error, file has been deleted successfully
                 console.log('Transcript deleted from local!');
             }); 
-            fs.unlink('backend/tempfiles/transcript_' + username + '.pdf', function (err) {
+            fs.unlink('./tempfiles/transcript_' + username + '.pdf', function (err) {
                 if (err) {
                     throw err;
                 }
