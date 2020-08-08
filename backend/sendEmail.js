@@ -21,9 +21,9 @@ exports.sendFiles = function (req, res) {
         text: 'Please find attached tutor details for vetting',
         attachments: [
             {
-                path: './tempfiles/cv_' + username + '.pdf' 
+                path: './tempfiles/cv_' + username + '.pdf'
             }, {
-                path: './tempfiles/transcript_' + username + '.pdf' 
+                path: './tempfiles/transcript_' + username + '.pdf'
             }
         ]
     };
@@ -43,14 +43,45 @@ exports.sendFiles = function (req, res) {
                 }
                 // if no error, file has been deleted successfully
                 console.log('Transcript deleted from local!');
-            }); 
+            });
             fs.unlink('./tempfiles/transcript_' + username + '.pdf', function (err) {
                 if (err) {
                     throw err;
                 }
                 // if no error, file has been deleted successfully
                 console.log('CV deleted from local!');
-            }); 
+            });
+        }
+    });
+}
+
+exports.sendVerifyEmail = function (req, res) {
+    let username = req.username;
+    let token = req.token;
+    let transport = nodemailer.createTransport(smtpTransport({
+        service: "Gmail",
+        host: 'smtp.gmail.com',
+        auth: {
+            user: myEmail,
+            pass: 'Team2020'
+        }
+    }));
+
+    let message = {
+        from: myEmail,
+        to: username,
+        subject: 'Account Activation Link from LearnInPlace Team',
+        html: `<h2>Please click on the link below to activate your account</h2>
+                        <p>http://localhost:8005/authentication/activate/${token}</p>
+                        `
+    };
+
+    transport.sendMail(message, function (err, info) {
+        if (err) {
+            console.log("Failed to send");
+            return;
+        } else {
+            console.log("Email sent" + info.response);
         }
     });
 }
