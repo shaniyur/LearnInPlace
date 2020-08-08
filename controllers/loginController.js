@@ -1,19 +1,8 @@
-const fs = require('fs');
-const mongoose = require('mongoose');
 const Student = require('../models/Student');
 const Tutor = require('../models/Tutor');
-const connectDB = require('../models/Connection');
-const jwt = require('jsonwebtoken');
-const rand = require('randomstring');
-const secret = rand.generate();
-Student.secret = secret;
-Student.active = false;
-// const mailgun = require("mailgun-js");
-// const DOMAIN = 'sandbox87f6624dab3e425a9c5f5714c82e0395.mailgun.org';
-// const mg = mailgun({apiKey: '0ecc68153105e99dad062488ec42cb8a-a65173b1-a35997ea', domain: DOMAIN});
+
 const express = require('express');
-const app = express();
-const sendEmail = require('../backend/sendEmail');
+
 function checkFormat(username) {
     let usernameResult = "";
     if (username.length < 4) {
@@ -95,40 +84,12 @@ exports.registerStudent = function (req, res) {
     const ln = user.lastName;
     const username = user.email;;
 
-    
-
-    // ** here
-    // check if the user exists in the database and register into the db
     Student.findStudent(username, function (result) {
         if (result[0] === false && result[1] === false) {
             Student.addStudent(req, function (err) {
                 if (err) {
                     console.log("Error occurred when calling loginController.register()");
                 } else {
-                    // const data = {
-                    //     from: 'noreply@learnInPlaceteam.com',
-                    //     to: username,
-                    //     subject: 'Account Activation Link from LearnInPlace Team',
-                    //     html: `<h2>Please click on the link below to activate your account</h2>
-                    //     <p>http://localhost:8005/authentication/activate/${token}</p>
-                    //     `
-                    
-                    // };
-                    // mg.messages().send(data, function (error, body) {
-                    //     if (error) {
-                    //         return res.json({
-                    //             message: error
-                    //         })
-                    //     }
-                    //     else {
-                    //         console.log("Sent");
-                    //     }
-                    // });
-
-                    // res.json({validFormat: true,
-                    //     result: 'success',
-                    //     message: 'New user created.'});
-
                     res.redirect('/finalpage');
                 }
             })

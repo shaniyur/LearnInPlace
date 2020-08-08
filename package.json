@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon routes/ui.js",
-    "tester": "nodemon backend/loadFiles.js"
+    "server": "nodemon app.js"
   },
   "repository": {
     "type": "git",
