@@ -6,7 +6,7 @@ const app = express();
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const uiRouter = require('./routes/ui');
-const apiRouter = require('./api');
+const apiRouter = require('./routes/api');
 
 
 
