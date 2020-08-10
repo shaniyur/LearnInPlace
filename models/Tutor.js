@@ -26,7 +26,8 @@ const tutorSchema = new mongoose.Schema({
     status: {
         type: String,
         index: true
-    }
+    },
+    userType: {type: String}
 });
 
 // var connectDB = require('./models/Connection');
@@ -97,7 +98,8 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
         comments: reqBody.body.tutor_message,    
         // transcript: reqBody.body.transcript,
         // cv: reqBody.body.cv,
-        status: "ok"
+        status: "ok",
+        userType: "Tutor"
     });
     tutor.save(function(err) {
         if (err) {
