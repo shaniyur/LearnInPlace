@@ -2,7 +2,7 @@ const express = require('express');
 const mailgun = require("mailgun-js");
 const DOMAIN = 'sandbox87f6624dab3e425a9c5f5714c82e0395.mailgun.org';
 const mg = mailgun({ apiKey: '0ecc68153105e99dad062488ec42cb8a-a65173b1-a35997ea', domain: DOMAIN });
-const app = express();
+const app = express.Router();
 
 const path = require('path');
 const apiRouter = require('../routes/api');
@@ -67,6 +67,7 @@ app.get('/checkall', function (req, resp) {
 })
 
 
-const port = process.env.PORT || '3000';
-app.listen(port, () => console.log("server started:" + port));
+// const port = process.env.PORT || '3000';
+// app.listen(port, () => console.log("server started:" + port));
+module.exports = app;
 

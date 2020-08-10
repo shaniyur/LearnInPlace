@@ -25,7 +25,8 @@ const studentSchema = new mongoose.Schema({
     status: {
         type: String,
         index: true
-    }
+    },
+    userType: {type: String}
 });
 
 studentSchema.statics.addStudent = function addStudent(reqBody, next) {
@@ -47,7 +48,8 @@ studentSchema.statics.addStudent = function addStudent(reqBody, next) {
         duration: reqBody.body.duration,
         sessionFreq: reqBody.body.session,
         eligibilityForFreeTutor: reqBody.body.eligibilityForFreeTutor,
-        status: "ok"
+        status: "ok",
+        userType: "Student"
     });
     student.save(function (err) {
         if (err) {

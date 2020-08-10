@@ -20,7 +20,8 @@ const tutorSchema = new mongoose.Schema({
     status: {
         type: String,
         index: true
-    }
+    },
+    userType: {type: String}
 });
 
 tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
@@ -40,8 +41,11 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
         numberOfStudents: reqBody.body.pref,
         duration: reqBody.body.duration,
         reasonToTutor: reqBody.body.motive,
-        comments: reqBody.body.tutor_message,
-        status: "ok"
+        comments: reqBody.body.tutor_message,    
+        // transcript: reqBody.body.transcript,
+        // cv: reqBody.body.cv,
+        status: "ok",
+        userType: "Tutor"
     });
     tutor.save(function (err) {
         if (err) {

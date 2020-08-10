@@ -1,4 +1,9 @@
 const express = require('express');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const authRouter = require('./routes/authRoutes');
+const profileRouter = require('./routes/profileRoutes')
+const passportSetup = require('./services/passportSetup')
 const mailgun = require("mailgun-js");
 const DOMAIN = 'sandbox87f6624dab3e425a9c5f5714c82e0395.mailgun.org';
 const mg = mailgun({apiKey: '0ecc68153105e99dad062488ec42cb8a-a65173b1-a35997ea', domain: DOMAIN});
@@ -6,7 +11,7 @@ const app = express();
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const uiRouter = require('./routes/ui');
-const apiRouter = require('./api');
+const apiRouter = require('./routes/api');
 
 
 
@@ -18,9 +23,17 @@ app.use(bodyParser());
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
+app.use(cookieSession({
+  maxAge: 24*60*60*1000,
+  keys: ['cookieenckey']
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', uiRouter);
 app.use('/api', apiRouter);
-
+app.use('/auth', authRouter);
+app.use('/profile', profileRouter);
 
 let gfs;
 
