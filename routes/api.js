@@ -2,13 +2,10 @@ const express = require('express');
 const route = express.Router();
 const loginController = require('../controllers/loginController');
 var connectDB = require('../models/Connection');
-var multer = require('multer');
 const sendEmail = require('../backend/sendEmail')
 const bodyParser = require('body-parser')
-const GridFsStorage = require('multer-gridfs-storage');
 const loading = require('../backend/loadDocs');
 route.use(bodyParser())
-
 
 connectDB();
 
@@ -32,8 +29,7 @@ route.post('/tutorfiles',
         else {
             res.send('success');
         }
-    })
-
+    });
 
 route.post('/tutorfileslocal',
     loading.temp.fields([{
@@ -48,6 +44,6 @@ route.post('/tutorfileslocal',
         else {
             res.send('success');
         }
-    })
+    });
 
 module.exports = route;

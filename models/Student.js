@@ -4,11 +4,10 @@ const rand = require('randomstring');
 const secret = rand.generate();
 let nodemailer = require('nodemailer');
 let smtpTransport = require('nodemailer-smtp-transport');
-let fs = require('fs');
 let myEmail = 'learninplaceteam@gmail.com';
 
 const studentSchema = new mongoose.Schema({
-    firstName: { type: String, required: true }, 
+    firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
@@ -33,7 +32,7 @@ studentSchema.statics.addStudent = function addStudent(reqBody, next) {
     let StudentModel = mongoose.model('student', studentSchema);
     let username = reqBody.body.email;
     let student = new StudentModel({
-        firstName: reqBody.body.firstName, 
+        firstName: reqBody.body.firstName,
         lastName: reqBody.body.lastName,
         username: username,
         email: username,
@@ -50,7 +49,7 @@ studentSchema.statics.addStudent = function addStudent(reqBody, next) {
         eligibilityForFreeTutor: reqBody.body.eligibilityForFreeTutor,
         status: "ok"
     });
-    student.save(function(err) {
+    student.save(function (err) {
         if (err) {
             console.log("error occurred when calling addStudent()");
             console.log(err);
@@ -71,11 +70,11 @@ studentSchema.statics.addStudent = function addStudent(reqBody, next) {
 };
 
 studentSchema.statics.findStudent = function findStudent(username, next) {
-    this.findOne({'username': username}, function (err, user) {
+    this.findOne({ 'username': username }, function (err, user) {
         if (err) {
             console.log("error occurred when calling findUser()");
             console.log(err);
-        }        
+        }
         if (user) {
             next([true, true]);
         } else {

@@ -5,17 +5,17 @@ const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?ret
 const storageStudent = new GridFsStorage({
     url: URI,
     file: (req, file) => {
-      return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             const filename = file.originalname;
             const fileInfo = {
                 filename: filename,
                 bucketName: 'student_files'
             };
-          resolve(fileInfo);
+            resolve(fileInfo);
         });
- 
+
     }
-  });
+});
 
 var uploadStudent = multer({ storage: storageStudent });
 
@@ -42,4 +42,4 @@ const storageTutor = new GridFsStorage({
 });
 var uploadTutor = multer({ storage: storageTutor });
 
-module.exports = {temp, uploadTutor, uploadStudent};
+module.exports = { temp, uploadTutor, uploadStudent };
