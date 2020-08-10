@@ -1,4 +1,4 @@
-# MOST UPDATED CODE ON "file_upload" BRANCH
+# MOST UPDATED CODE ON "merged_code" BRANCH
 
 Please install Node.js before getting started
 If an error for 'nodemon' is encountered, run 'npm i nodemon'
