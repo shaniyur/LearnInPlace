@@ -66,6 +66,10 @@ app.get('/checkall', function(req, resp) {
     resp.sendFile('checkall.js', { root: path.join(__dirname, '../js') });
 })
 
+app.get('/css/tutorstyles.css', function(req, resp) {
+    resp.sendFile('tutorstyles.css', { root: path.join(__dirname, '../css') });
+})
+
 app.get('/css/intermediate.css', function(req, resp) {
     resp.sendFile('intermediate.css', { root: path.join(__dirname, '../css') });
 })

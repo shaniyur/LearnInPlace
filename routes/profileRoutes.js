@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+
 const authCheck = (req, res, next) => {
     if (!req.user) {
         res.redirect('/');
@@ -9,9 +10,9 @@ const authCheck = (req, res, next) => {
 };
 
 router.get('/', authCheck, (req, res) => {
-    //res.render('', { user: req.user });
+    res.render('../views/index.html', { user: req.user });
     console.log(('This is your ' + req.user.userType + ' profile, ' + req.user.firstName))
-    res.send('This is your ' + req.user.userType + ' profile, ' + req.user.firstName)
+        //res.send('This is your ' + req.user.userType + ' profile, ' + req.user.firstName)
 });
 
 module.exports = router
