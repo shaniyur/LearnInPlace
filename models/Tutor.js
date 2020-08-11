@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { link } = require("fs");
 
 const tutorSchema = new mongoose.Schema({
     firstName: { type: String, required: true },
@@ -15,8 +16,7 @@ const tutorSchema = new mongoose.Schema({
     duration: { type: String },
     reasonToTutor: { type: Array },
     comments: { type: String },
-    transcript: { type: String },
-    cv: { type: String },
+    calendlyLink: { type: String },
     status: {
         type: String,
         index: true
@@ -41,9 +41,7 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
         numberOfStudents: reqBody.body.pref,
         duration: reqBody.body.duration,
         reasonToTutor: reqBody.body.motive,
-        comments: reqBody.body.tutor_message,    
-        // transcript: reqBody.body.transcript,
-        // cv: reqBody.body.cv,
+        comments: reqBody.body.tutor_message,
         status: "ok",
         userType: "Tutor"
     });
@@ -73,5 +71,27 @@ tutorSchema.statics.findTutor = function findtutor(username, next) {
     });
 };
 
+tutorSchema.statics.getCalendlyLink = function getCalendlyLink(username, next) {
+    this.findOne({ 'username' : username}, { projection : { _id: 0, calendlyLink: 1}}, function(err, user) {
+        if (err) {
+            console.log("User not found");
+            console.log(err);
+        }
+        if (user) {
+            next([true, user]);
+        } else {
+            next([false, false]);
+        }
+    });
+} 
 
+tutorSchema.statics.getDetails = function getDetails(username, next) {
+    this.findOne({ 'username' : username}, { projection : { _id: 0, firstName: 1, subjects : 1, availableHours: 1, numberOfStudents: 1 }}, function(err, user) {
+        if (result[0] === true) {
+            next([true, result]);
+        } else {
+            next([false, false]);
+        }
+    });
+}
 module.exports = mongoose.model('tutor', tutorSchema);

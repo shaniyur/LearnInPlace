@@ -25,7 +25,7 @@ router.get('/logout', function(req, res){
 });
 
 router.get('/google/redirect', passport.authenticate('google'), function(req, res){
-    res.redirect('/profile/');
+    res.redirect('/tutor/profile/');
     //req will  now have user record from mongo when logged in for this
 })
 
