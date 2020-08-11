@@ -4,7 +4,6 @@ const rand = require('randomstring');
 const secret = rand.generate();
 let nodemailer = require('nodemailer');
 let smtpTransport = require('nodemailer-smtp-transport');
-let fs = require('fs');
 let myEmail = 'learninplaceteam@gmail.com';
 
 const studentSchema = new mongoose.Schema({

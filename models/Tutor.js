@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
-const path = require('path');
-const crypto = require('crypto');
-const Grid = require('gridfs-stream');
-const GridFsStorage = require('multer-gridfs-storage');
-const multer = require('multer');
+const jwt = require('jsonwebtoken');
+const rand = require('randomstring');
+const secret = rand.generate();
+let nodemailer = require('nodemailer');
+let smtpTransport = require('nodemailer-smtp-transport');
+let myEmail = 'learninplaceteam@gmail.com';
 
 const tutorSchema = new mongoose.Schema({
     firstName: { type: String, required: true }, 
@@ -29,53 +30,6 @@ const tutorSchema = new mongoose.Schema({
     },
     userType: {type: String}
 });
-
-// var connectDB = require('./models/Connection');
-
-// Mongo connection
-const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?retryWrites=true&w=majority";
-
-// // Create mongo connection
-// const conn = mongoose.createConnection(URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// });
-
-// // Init gfs
-// let gfs;
-
-// conn.once('open', () => {
-//     // Init stream
-//     gfs = Grid(conn.db, mongoose.mongo);
-//     gfs.collection('transcripts');
-// });
-
-// connectDB();
-
-// Create storage engine
-// const storage = new GridFsStorage({
-//     url: URI,
-//     file: (req, file) => {
-//     console.log("process 1");
-
-//       return new Promise((resolve, reject) => {
-//         crypto.randomBytes(16, (err, buf) => {
-//           if (err) { 
-//             return reject(err);
-//           }
-//   console.log("process 2");
-
-//           const filename = buf.toString('hex') + path.extname(file.originalname);
-//           const fileInfo = {
-//             filename: filename,
-//             bucketName: 'transcripts'
-//           };
-//           resolve(fileInfo);
-//         });
-//       });
-//     }
-//   });
-// const upload = multer({ storage });
 
 tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
     let TutorModel = mongoose.model('tutor', tutorSchema);
@@ -107,30 +61,15 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
             console.log(err);
             next(err);
         } else {
-            console.log("successfully add new user: " + reqBody.body.tutor_email);
-            // const storage = new GridFsStorage({
-            //     url: URI,
-            //     file: (req, file) => {
-            //     console.log("process 1");
-            
-            //       return new Promise((resolve, reject) => {
-                   
-                    
-            //         console.log("process 2");
-            
-            //           const filename = "hello";
-            //           const fileInfo = {
-            //             filename: filename,
-            //             bucketName: 'transcripts'
-            //           };
-            //           resolve(fileInfo);
-                    
-            //       });
-            //     }
-            //   });
-            // const upload = multer({ storage: storage });
-            // upload.single('tutor_trans');
-            // upload.single(reqBody.body.tutor_trans)
+            const Tutor = mongoose.model('tutor', tutorSchema);
+            Tutor.secret = secret;
+            Tutor.active = false;
+            const fn = reqBody.body.first_tutor_name;
+            const ln = reqBody.body.last_tutor_name;
+            const token = jwt.sign({ fn, ln, username }, secret, { expiresIn: '20m' });
+            console.log("JWT token : " + token);
+            sendVerifyEmail(username, fn, token);
+            console.log("successfully add new user: " + username);
             next(null);
         }
     });
@@ -152,5 +91,33 @@ tutorSchema.statics.findTutor = function findtutor(username, next) {
     });
 };
 
+function sendVerifyEmail(username, fn, token) {
+    let transport = nodemailer.createTransport(smtpTransport({
+        service: "Gmail",
+        host: 'smtp.gmail.com',
+        auth: {
+            user: myEmail,
+            pass: 'Team2020'
+        }
+    }));
+
+    let message = {
+        from: myEmail,
+        to: username,
+        subject: 'Account Activation Link from LearnInPlace Team',
+        html: `<h2>Hi ${fn}, <h2> <div><h4>Please click on the link below to activate your account</h4>
+                        <p>http://localhost:8005/authentication/activate/${token}</p> <div>
+                        `
+    };
+
+    transport.sendMail(message, function (err, info) {
+        if (err) {
+            console.log("Failed to send");
+            return;
+        } else {
+            console.log("Email sent" + info.response);
+        }
+    });
+}
 
 module.exports = mongoose.model('tutor', tutorSchema);
