@@ -5,6 +5,7 @@ var connectDB = require('../models/Connection');
 const sendEmail = require('../backend/sendEmail')
 const bodyParser = require('body-parser')
 const loading = require('../backend/loadDocs');
+const tutorProfileController = require('../controllers/tutorProfileController');
 route.use(bodyParser())
 
 connectDB();
@@ -14,7 +15,6 @@ route.post('/sendEmail', sendEmail.sendFiles);
 route.post('/tutor/register', loginController.registerTutor);
 
 route.post('/student/register', loading.uploadStudent.single('prodImage'), loginController.registerStudent);
-
 
 route.post('/tutorfiles',
     loading.uploadTutor.fields([{
@@ -45,5 +45,7 @@ route.post('/tutorfileslocal',
             res.send('success');
         }
     });
+
+route.post('/tutor/:username/details', tutorProfileController.getTutorDetails);
 
 module.exports = route;

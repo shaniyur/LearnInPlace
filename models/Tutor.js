@@ -86,9 +86,14 @@ tutorSchema.statics.getCalendlyLink = function getCalendlyLink(username, next) {
 } 
 
 tutorSchema.statics.getDetails = function getDetails(username, next) {
-    this.findOne({ 'username' : username}, { projection : { _id: 0, firstName: 1, subjects : 1, availableHours: 1, numberOfStudents: 1 }}, function(err, user) {
-        if (result[0] === true) {
-            next([true, result]);
+    this.findOne({ 'username' : username}, function(err, user) {
+        console.log(user);
+        if (err) {
+            console.log("User not found");
+            console.log(err);
+        }
+        if (user) {
+            next([true, user]);
         } else {
             next([false, false]);
         }

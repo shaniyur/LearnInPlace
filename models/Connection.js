@@ -2,8 +2,9 @@
 const mongoose = require('mongoose');
 const Grid = require('gridfs-stream');
 const GridFsStorage = require('multer-gridfs-storage');
-
-const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?retryWrites=true&w=majority";
+const dotenv = require('dotenv');
+dotenv.config();
+const URI = process.env.DATABASE_URI;
 
 const connectDB = async() => {
     const conn = mongoose.connect(URI, {

@@ -2,10 +2,11 @@ const Tutor = require('../models/Tutor');
 const express = require('express');
 
 exports.getTutorDetails = function(req, res) {
-    let username = req.body.username;
+    let username = req.params.username;
+    console.log(username);
     Tutor.findTutor(username, function(result) {
         if (result[0] === true && result[1] === true) {
-            Tutor.getTutorDetails(username, function(details) {
+            Tutor.getDetails(username, function(details) {
                 if (details[0] === true) {
                     let link;
                     Tutor.getCalendlyLink(username, function(resultC) {
