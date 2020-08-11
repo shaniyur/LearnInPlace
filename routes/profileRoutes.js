@@ -10,7 +10,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get('/', authCheck, (req, res) => {
-    res.render('../views/index.html', { user: req.user });
+    res.render('../views/layouts/index.handlebars', { first: req.user.firstName });
     console.log(('This is your ' + req.user.userType + ' profile, ' + req.user.firstName))
         //res.send('This is your ' + req.user.userType + ' profile, ' + req.user.firstName)
 });

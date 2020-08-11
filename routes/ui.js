@@ -70,6 +70,10 @@ app.get('/css/tutorstyles.css', function(req, resp) {
     resp.sendFile('tutorstyles.css', { root: path.join(__dirname, '../css') });
 })
 
+app.get('/tutorhomepg', function(req, resp) {
+    resp.sendFile('tutorhomepg.js', { root: path.join(__dirname, '../js') });
+})
+
 app.get('/css/intermediate.css', function(req, resp) {
     resp.sendFile('intermediate.css', { root: path.join(__dirname, '../css') });
 })
@@ -82,6 +86,10 @@ app.get('/tutorcal', function(req, resp) {
 app.get('/tutorverification', function(req, resp) {
     console.log("tutor verification page sent")
     resp.sendFile('pleaseveri.html', { root: path.join(__dirname, "../views") });
+})
+
+app.get('/profile/401', function(req, resp) {
+    resp.sendFile('401.html', { root: path.join(__dirname, '../views') });
 })
 
 // const port = process.env.PORT || '3000';
