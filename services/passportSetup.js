@@ -14,12 +14,11 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
     //find user based on id in mongo
     //console.log("deserialize -- ", userType)
-    if(userType === "tutor"){
+    if (userType === "tutor") {
         Tutor.findById(id).then((tutor) => {
             done(null, tutor);
         });
-    }
-    else{
+    } else {
         Student.findById(id).then((student) => {
             done(null, student);
         });
@@ -36,29 +35,27 @@ passport.use(new GoogleStategy({
     if (typeof localStorage === "undefined" || localStorage === null) {
         var LocalStorage = require('node-localstorage').LocalStorage;
         localStorage = new LocalStorage('./scratch');
-      }
-      
+    }
+
     userType = localStorage.getItem('localUserType');
 
     var userEmail = email.emails[0].value;
     console.log(userEmail, userType);
 
-    if(userType === 'tutor'){
-        Tutor.findOne({'email': userEmail}, function(err, user){
-            if(user){
+    if (userType === 'tutor') {
+        Tutor.findOne({ 'email': userEmail }, function(err, user) {
+            if (user) {
                 done(null, user);
-            }
-            else{
+            } else {
+                // done(null, null);
                 done("Tutor doesn't exist", null);
             }
         })
-    }
-    else{
-        Student.findOne({'email': userEmail}, function (err, studentUser){
-            if(studentUser){
+    } else {
+        Student.findOne({ 'email': userEmail }, function(err, studentUser) {
+            if (studentUser) {
                 done(null, studentUser);
-            }
-            else{
+            } else {
                 done("Student doesn't exist", null);
             }
         });
