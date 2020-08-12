@@ -1,6 +1,6 @@
 var multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
-const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?retryWrites=true&w=majority";
+const URI = require('../env').DATABASE_URI;
 
 const storageStudent = new GridFsStorage({
     url: URI,

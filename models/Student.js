@@ -4,7 +4,8 @@ const rand = require('randomstring');
 const secret = rand.generate();
 let nodemailer = require('nodemailer');
 let smtpTransport = require('nodemailer-smtp-transport');
-let myEmail = 'learninplaceteam@gmail.com';
+const myEmail = require('../env').EMAIL_ADDRESS;
+const myPassword = require('../env').EMAIL_PASSWORD;
 
 const studentSchema = new mongoose.Schema({
     firstName: { type: String, required: true }, 
@@ -93,7 +94,7 @@ function sendVerifyEmail(username, token) {
         host: 'smtp.gmail.com',
         auth: {
             user: myEmail,
-            pass: 'Team2020'
+            pass: myPassword
         }
     }));
 

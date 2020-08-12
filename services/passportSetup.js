@@ -2,6 +2,8 @@ const passport = require('passport');
 const GoogleStategy = require('passport-google-oauth20');
 const Tutor = require('../models/Tutor');
 const Student = require('../models/Student');
+const clientID = require('../env').CLIENT_ID;
+const clientSecret = require('../env').CLIENT_SECRET;
 
 var userType = "";
 
@@ -29,8 +31,8 @@ passport.deserializeUser((id, done) => {
 
 passport.use(new GoogleStategy({
     callbackURL: '/auth/google/redirect',
-    clientID: '418625314255-hdade0ln2b0pbeal8bs7olfaj3v4e4hc.apps.googleusercontent.com',
-    clientSecret: 'VF7Tn91paKeT_tNQl9MpF81Z'
+    clientID: clientID,
+    clientSecret: clientSecret
 }, (accessToken, refreshToken, email, done) => {
     //callback
     if (typeof localStorage === "undefined" || localStorage === null) {

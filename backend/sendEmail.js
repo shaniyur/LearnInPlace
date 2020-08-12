@@ -1,7 +1,8 @@
 let nodemailer = require('nodemailer');
 let smtpTransport = require('nodemailer-smtp-transport');
 let fs = require('fs');
-let myEmail = 'learninplaceteam@gmail.com';
+const myEmail = require('../env').EMAIL_ADDRESS;
+const myPassword = require('../env').EMAIL_PASSWORD;
 
 exports.sendFiles = function (req, res) {
     let username = req.body.tutor_email;
@@ -10,13 +11,13 @@ exports.sendFiles = function (req, res) {
         host: 'smtp.gmail.com',
         auth: {
             user: myEmail,
-            pass: 'Team2020'
+            pass: myPassword
         }
     }));
 
     let message = {
         from: myEmail,
-        to: 'learninplaceteam@gmail.com',
+        to: myEmail,
         subject: 'Tutor details',
         text: 'Please find attached tutor details for vetting',
         attachments: [
@@ -63,7 +64,7 @@ exports.sendVerifyEmail = function (req, res) {
         host: 'smtp.gmail.com',
         auth: {
             user: myEmail,
-            pass: 'Team2020'
+            pass: myPassword
         }
     }));
 

@@ -19,7 +19,7 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 // Mongo connection
-const URI = "mongodb+srv://dbUser:summer2020@cluster0.hropv.mongodb.net/test?retryWrites=true&w=majority";
+const URI = require('../env').DATABASE_URI;
 
 // Create mongo connection
 const conn = mongoose.createConnection(URI, {
