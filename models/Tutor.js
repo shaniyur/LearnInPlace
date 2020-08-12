@@ -4,9 +4,10 @@ const crypto = require('crypto');
 const Grid = require('gridfs-stream');
 const GridFsStorage = require('multer-gridfs-storage');
 const multer = require('multer');
+const { Decimal128 } = require("mongodb");
 
 const tutorSchema = new mongoose.Schema({
-    firstName: { type: String, required: true }, 
+    firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
@@ -20,14 +21,14 @@ const tutorSchema = new mongoose.Schema({
     numberOfStudents: { type: String },
     duration: { type: String },
     reasonToTutor: { type: Array },
-    comments: { type: String },    
+    comments: { type: String },
     transcript: { type: String },
     cv: { type: String },
     status: {
         type: String,
         index: true
     },
-    userType: {type: String}
+    userType: { type: String }
 });
 
 // var connectDB = require('./models/Connection');
@@ -81,7 +82,7 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
     let TutorModel = mongoose.model('tutor', tutorSchema);
     let username = reqBody.body.tutor_email;
     let tutor = new TutorModel({
-        firstName: reqBody.body.first_tutor_name, 
+        firstName: reqBody.body.first_tutor_name,
         lastName: reqBody.body.last_tutor_name,
         username: username,
         // password: reqBody.body.password,
@@ -95,7 +96,7 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
         numberOfStudents: reqBody.body.pref,
         duration: reqBody.body.duration,
         reasonToTutor: reqBody.body.motive,
-        comments: reqBody.body.tutor_message,    
+        comments: reqBody.body.tutor_message,
         // transcript: reqBody.body.transcript,
         // cv: reqBody.body.cv,
         status: "ok",
@@ -112,19 +113,19 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
             //     url: URI,
             //     file: (req, file) => {
             //     console.log("process 1");
-            
+
             //       return new Promise((resolve, reject) => {
-                   
-                    
+
+
             //         console.log("process 2");
-            
+
             //           const filename = "hello";
             //           const fileInfo = {
             //             filename: filename,
             //             bucketName: 'transcripts'
             //           };
             //           resolve(fileInfo);
-                    
+
             //       });
             //     }
             //   });
@@ -137,12 +138,12 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
 };
 
 tutorSchema.statics.findTutor = function findtutor(username, next) {
-    this.findOne({'username': username}, function (err, user) {
+    this.findOne({ 'username': username }, function(err, user) {
         if (err) {
             // handle error
             console.log("error occurred when calling findUser()");
             console.log(err);
-        }        
+        }
         if (user) {
             // check password - hashed
             next([true, true]);
