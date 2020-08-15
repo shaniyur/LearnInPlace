@@ -13,6 +13,7 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const uiRouter = require('./routes/ui');
 const apiRouter = require('./routes/api');
+const activateRouter = require('./routes/activateRoutes');
 
 
 
@@ -43,6 +44,7 @@ app.use('/', uiRouter);
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
 app.use('/profile', profileRouter);
+app.use('/authentication', activateRouter);
 
 let gfs;
 

@@ -8,7 +8,7 @@ const myEmail = require('../env').EMAIL_ADDRESS;
 const myPassword = require('../env').EMAIL_PASSWORD;
 
 const tutorSchema = new mongoose.Schema({
-    firstName: { type: String, required: true }, 
+    firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
@@ -22,21 +22,21 @@ const tutorSchema = new mongoose.Schema({
     numberOfStudents: { type: String },
     duration: { type: String },
     reasonToTutor: { type: Array },
-    comments: { type: String },    
+    comments: { type: String },
     transcript: { type: String },
     cv: { type: String },
     status: {
         type: String,
         index: true
     },
-    userType: {type: String}
+    userType: { type: String }
 });
 
 tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
     let TutorModel = mongoose.model('tutor', tutorSchema);
     let username = reqBody.body.tutor_email;
     let tutor = new TutorModel({
-        firstName: reqBody.body.first_tutor_name, 
+        firstName: reqBody.body.first_tutor_name,
         lastName: reqBody.body.last_tutor_name,
         username: username,
         // password: reqBody.body.password,
@@ -50,7 +50,7 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
         numberOfStudents: reqBody.body.pref,
         duration: reqBody.body.duration,
         reasonToTutor: reqBody.body.motive,
-        comments: reqBody.body.tutor_message,    
+        comments: reqBody.body.tutor_message,
         // transcript: reqBody.body.transcript,
         // cv: reqBody.body.cv,
         status: "ok",
@@ -77,12 +77,12 @@ tutorSchema.statics.addTutor = function addtutor(reqBody, next) {
 };
 
 tutorSchema.statics.findTutor = function findtutor(username, next) {
-    this.findOne({'username': username}, function (err, user) {
+    this.findOne({ 'username': username }, function(err, user) {
         if (err) {
             // handle error
             console.log("error occurred when calling findUser()");
             console.log(err);
-        }        
+        }
         if (user) {
             // check password - hashed
             next([true, true]);
@@ -107,11 +107,11 @@ function sendVerifyEmail(username, fn, token) {
         to: username,
         subject: 'Account Activation Link from LearnInPlace Team',
         html: `<h2>Hi ${fn}, <h2> <div><h4>Please click on the link below to activate your account</h4>
-                        <p>http://localhost:8005/authentication/activate/${token}</p> <div>
+                        <p>http://localhost:3000/authentication/activate/${token}</p> <div>
                         `
     };
 
-    transport.sendMail(message, function (err, info) {
+    transport.sendMail(message, function(err, info) {
         if (err) {
             console.log("Failed to send");
             return;

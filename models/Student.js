@@ -8,7 +8,7 @@ const myEmail = require('../env').EMAIL_ADDRESS;
 const myPassword = require('../env').EMAIL_PASSWORD;
 
 const studentSchema = new mongoose.Schema({
-    firstName: { type: String, required: true }, 
+    firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
@@ -27,14 +27,14 @@ const studentSchema = new mongoose.Schema({
         type: String,
         index: true
     },
-    userType: {type: String}
+    userType: { type: String }
 });
 
 studentSchema.statics.addStudent = function addStudent(reqBody, next) {
     let StudentModel = mongoose.model('student', studentSchema);
     let username = reqBody.body.email;
     let student = new StudentModel({
-        firstName: reqBody.body.firstName, 
+        firstName: reqBody.body.firstName,
         lastName: reqBody.body.lastName,
         username: username,
         email: username,
@@ -73,11 +73,11 @@ studentSchema.statics.addStudent = function addStudent(reqBody, next) {
 };
 
 studentSchema.statics.findStudent = function findStudent(username, next) {
-    this.findOne({'username': username}, function (err, user) {
+    this.findOne({ 'username': username }, function(err, user) {
         if (err) {
             console.log("error occurred when calling findUser()");
             console.log(err);
-        }        
+        }
         if (user) {
             next([true, true]);
         } else {
@@ -103,11 +103,11 @@ function sendVerifyEmail(username, token) {
         to: username,
         subject: 'Account Activation Link from LearnInPlace Team',
         html: `<h2>Please click on the link below to activate your account</h2>
-                        <p>http://localhost:8005/authentication/activate/${token}</p>
+                        <p>http://localhost:3000/authentication/activate/${token}</p>
                         `
     };
 
-    transport.sendMail(message, function (err, info) {
+    transport.sendMail(message, function(err, info) {
         if (err) {
             console.log("Failed to send");
             return;
