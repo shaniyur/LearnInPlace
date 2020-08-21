@@ -93,8 +93,6 @@ h1.Alliances {
 }
 
 .High-Quality-Tutorin {
-    width: 501px;
-    height: 113px;
     font-family: Helvetica;
     font-size: 48px;
     font-weight: bold;
@@ -110,8 +108,6 @@ h1.Alliances {
 }
 
 .Our-mission-is-to-co {
-    width: 591px;
-    height: 105px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     font-weight: normal;
@@ -123,8 +119,6 @@ h1.Alliances {
 }
 
 .All-tutoring-session {
-    width: 545px;
-    height: 34px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     font-weight: normal;
@@ -133,4 +127,71 @@ h1.Alliances {
     line-height: 1.33;
     letter-spacing: normal;
     color: #505050;
+}
+
+.student-Rectangle {
+    width: 176px;
+    height: 56px;
+    border-radius: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 21px;
+    /* font-weight: 600; */
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    background-color: #36a598;
+}
+
+.tutor-Rectangle {
+    width: 148px;
+    height: 25px;
+    font-family: apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 21px;
+    /* font-weight: 600; */
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    width: 207px;
+    height: 56px;
+    border-radius: 5px;
+    background-color: #e88939;
+}
+
+.Signin {
+    border-radius: 5px;
+    background-color: #36a598;
+    font-family: apple-system, BlinkMacSystemFont, sans-serif;
+    color: #ffffff;
+}
+
+.Learning {
+    width: 144px;
+    height: 43px;
+    background-color: #36a598;
+    font-family: SFProRounded;
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.34;
+    letter-spacing: normal;
+    color: #36a598;
+}
+
+.Alliances {
+    width: 165px;
+    height: 43px;
+    background-color: #7b7b7b;
+    font-family: SFProRounded;
+    font-size: 32px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.34;
+    letter-spacing: normal;
+    color: #7b7b7b;
 }
