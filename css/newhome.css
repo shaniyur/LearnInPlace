@@ -1,0 +1,198 @@
+.Learning {
+    position: relative;
+    left: 83px;
+    display: inline-block;
+    top: 77px;
+    width: 144px;
+    height: 43px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.34;
+    letter-spacing: normal;
+    color: #36a598;
+}
+
+h1.Alliances {
+    position: relative;
+    display: inline-block;
+    left: 227px;
+    top: 77px;
+    width: 165px;
+    height: 43px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.34;
+    letter-spacing: normal;
+    color: #7b7b7b;
+}
+
+.For-Students {
+    position: relative;
+    display: inline-block;
+    left: 878px;
+    top: 88px;
+    white-space: nowrap;
+    width: 116px;
+    height: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #6e6d7a;
+    text-decoration: none;
+}
+
+
+/* .topbar * {
+    display: inline;
+} */
+
+.For-Tutors {
+    position: relative;
+    display: inline-block;
+    left: 1034px;
+    top: 88px;
+    width: 91px;
+    height: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    white-space: nowrap;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #6e6d7a;
+    text-decoration: none;
+}
+
+.FAQ {
+    position: relative;
+    left: 1165px;
+    top: 88px;
+    width: 39px;
+    height: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #6e6d7a;
+    text-decoration: none;
+}
+
+.High-Quality-Tutorin {
+    font-family: Helvetica;
+    font-size: 48px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #0d0c22;
+}
+
+.High-Quality-Tutorin .text-style-1 {
+    line-height: 1.02;
+}
+
+.Our-mission-is-to-co {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #505050;
+}
+
+.All-tutoring-session {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #505050;
+}
+
+.student-Rectangle {
+    width: 176px;
+    height: 56px;
+    border-radius: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 21px;
+    /* font-weight: 600; */
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    background-color: #36a598;
+}
+
+.tutor-Rectangle {
+    width: 148px;
+    height: 25px;
+    font-family: apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 21px;
+    /* font-weight: 600; */
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    width: 207px;
+    height: 56px;
+    border-radius: 5px;
+    background-color: #e88939;
+}
+
+.Signin {
+    border-radius: 5px;
+    background-color: #36a598;
+    font-family: apple-system, BlinkMacSystemFont, sans-serif;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.Learning {
+    width: 144px;
+    height: 43px;
+    background-color: #36a598;
+    font-family: SFProRounded;
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.34;
+    letter-spacing: normal;
+    color: #36a598;
+}
+
+.Alliances {
+    width: 165px;
+    height: 43px;
+    background-color: #7b7b7b;
+    font-family: SFProRounded;
+    font-size: 32px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.34;
+    letter-spacing: normal;
+    color: #7b7b7b;
+}

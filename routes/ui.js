@@ -11,7 +11,7 @@ app.use(express.static('./studentsignup'));
 app.use('/api', apiRouter);
 
 app.get('/', function(req, resp) {
-    resp.sendFile('home.html', { root: path.join(__dirname, "../views") });
+    resp.sendFile('newhome.html', { root: path.join(__dirname, "../views") });
 })
 
 app.get('/tutorsignup', function(req, resp) {
@@ -39,11 +39,11 @@ app.get('/finalpage', function(req, resp) {
 })
 
 app.get('/css/home.css', function(req, resp) {
-    resp.sendFile('home.css', { root: path.join(__dirname, '../css') });
+    resp.sendFile('newhome.css', { root: path.join(__dirname, '../css') });
 })
 
-app.get('/css/images/tutor.svg', function(req, resp) {
-    resp.sendFile('tutor.svg', { root: path.join(__dirname, '../css/images') });
+app.get('/css/images/5SCENE.svg', function(req, resp) {
+    resp.sendFile('5SCENE.svg', { root: path.join(__dirname, '../css/images') });
 })
 
 app.get('/css/images/student.svg', function(req, resp) {
