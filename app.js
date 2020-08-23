@@ -14,6 +14,7 @@ const bodyParser = require('body-parser');
 const uiRouter = require('./routes/ui');
 const apiRouter = require('./routes/api');
 const activateRouter = require('./routes/activateRoutes');
+const cookieEncryption = require('./env').COOKIE_ENCRYPTION;
 
 
 
@@ -35,7 +36,7 @@ app.set('view engine', 'handlebars');
 
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: ['cookieenckey']
+    keys: [cookieEncryption]
 }));
 app.use(passport.initialize());
 app.use(passport.session());

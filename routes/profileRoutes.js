@@ -14,7 +14,6 @@ router.get('/', authCheck, (req, res) => {
         res.render('../views/layouts/tutordash.handlebars', { first: req.user.firstName });
     } else {
         res.render('../views/layouts/studentdash.handlebars', { first: req.user.firstName });
-        console.log('This is your ' + req.user.userType + ' profile, ' + req.user.firstName)
     }
 });
 

@@ -35,34 +35,53 @@ passport.use(new GoogleStategy({
     clientSecret: clientSecret
 }, (accessToken, refreshToken, email, done) => {
     //callback
-    if (typeof localStorage === "undefined" || localStorage === null) {
-        var LocalStorage = require('node-localstorage').LocalStorage;
-        localStorage = new LocalStorage('./scratch');
-      }
+    // if (typeof localStorage === "undefined" || localStorage === null) {
+    //     var LocalStorage = require('node-localstorage').LocalStorage;
+    //     localStorage = new LocalStorage('./scratch');
+    //   }
       
-    userType = localStorage.getItem('localUserType');
+    // userType = localStorage.getItem('localUserType');
 
     var userEmail = email.emails[0].value;
-    console.log(userEmail, userType);
+    console.log(userEmail);
+    
+    Tutor.findOne({'email': userEmail}, function(err, user){
+        if(user){
+            userType = "tutor"
+            done(null, user);
+        }
+        else if(!user){
+            Student.findOne({'email': userEmail}, function (err, studentUser){
+                if(studentUser){
+                    userType = "student"
+                    done(null, studentUser);
+                }
+                else if(!studentUser){
+                    done("This user doesn't exist", null);
+                }
+            });
+        }
+    });
 
-    if(userType === 'tutor'){
-        Tutor.findOne({'email': userEmail}, function(err, user){
-            if(user){
-                done(null, user);
-            }
-            else{
-                done("Tutor doesn't exist", null);
-            }
-        })
-    }
-    else{
-        Student.findOne({'email': userEmail}, function (err, studentUser){
-            if(studentUser){
-                done(null, studentUser);
-            }
-            else{
-                done("Student doesn't exist", null);
-            }
-        });
-    }
+
+    // if(userType === 'tutor'){
+    //     Tutor.findOne({'email': userEmail}, function(err, user){
+    //         if(user){
+    //             done(null, user);
+    //         }
+    //         else{
+    //             done("Tutor doesn't exist", null);
+    //         }
+    //     })
+    // }
+    // else{
+    //     Student.findOne({'email': userEmail}, function (err, studentUser){
+    //         if(studentUser){
+    //             done(null, studentUser);
+    //         }
+    //         else{
+    //             done("Student doesn't exist", null);
+    //         }
+    //     });
+    // }
 }));

@@ -4,16 +4,7 @@ const passport = require('passport');
 
 
 
-router.get('/google', function(req, res, next) {
-    //console.log(req.query.db)
-    if (typeof localStorage === "undefined" || localStorage === null) {
-        var LocalStorage = require('node-localstorage').LocalStorage;
-        localStorage = new LocalStorage('./scratch');
-      }
-      
-    localStorage.setItem('localUserType', req.query.db);
-    next();
-}, passport.authenticate('google', {
+router.get('/google', passport.authenticate('google', {
     //email, profile, etc
     scope: ['email']
 }));
