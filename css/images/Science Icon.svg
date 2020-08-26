@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="53px" height="69px" viewBox="0 0 53 69" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Science Icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Tutor-Sign-up-Page-" transform="translate(-1136.000000, -65.000000)">
+            <g id="subject" transform="translate(760.000000, 51.000000)">
+                <g id="Name-Textbox">
+                    <g id="subject" transform="translate(0.000000, 4.000000)">
+                        <g id="Group-4">
+                            <g id="Science-Icon" transform="translate(377.000000, 10.000000)">
+                                <ellipse id="Oval" fill="#78E5E1" fill-rule="nonzero" transform="translate(47.593337, 5.957084) rotate(-67.250000) translate(-47.593337, -5.957084) " cx="47.5933373" cy="5.95708382" rx="1" ry="4.41127792"></ellipse>
+                                <path d="M42.7905131,6 L30.8904476,34.3331542 L4.60532717,44.1426709 C3.06325747,44.7226003 2.03142149,46.1806583 2.00070418,47.8231894 C1.96998686,49.4657204 2.9465901,50.9610946 4.46590532,51.5979036 L45.2508988,68.6664627 C46.7755177,69.3278121 48.5511726,68.9871285 49.7205354,67.8089019 C50.8898982,66.6306753 51.2124784,64.8572192 50.5325267,63.3447999 L39.0917333,37.7337866 L51,9.42515626" id="Path" fill="#FADB93" fill-rule="nonzero" opacity="0.57"></path>
+                                <path d="M40.8059262,1 L28.908131,29.3101261 L2.61334823,39.1610363 C1.06725664,39.7382011 0.0314341383,41.1990396 0.000702063375,42.8456968 C-0.0300300116,44.4923539 0.950565224,45.9906507 2.47404897,46.624838 L43.2641483,63.6861239 C44.7850069,64.3240776 46.5421119,63.9710399 47.6969024,62.7954945 C48.8516929,61.6199492 49.1700978,59.8601742 48.5001615,58.3560049 L37.1022048,32.7354634 L49,4.43351226" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <ellipse id="Oval" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round" transform="translate(44.689978, 2.860219) rotate(-67.250000) translate(-44.689978, -2.860219) " cx="44.6899776" cy="2.86021899" rx="1" ry="4.41127792"></ellipse>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

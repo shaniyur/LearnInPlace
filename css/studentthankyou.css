@@ -1,20 +1,25 @@
 .leftRectangle {
     width: 42.9166667%;
     /* width: 618px; */
-    min-height: 100vh;
+    /* min-height: 100vh; */
     height: 100%;
     background-color: rgba(54, 165, 152, 0.15);
     float: left;
+    overflow: hidden;
+    display: flexbox;
 }
 
+
+}
 .rightRectangle {
     width: 57.0833333%;
     float: right;
-    min-height: 100vh;
-    height: 100%;
-    background-color: #ffffff;
+    /* min-height: 100vh;
+    height: 100%; */
+    /* background-color: #d48888; */
+    
+    display: flexbox;
 }
-
 .thanks {
     font-family: apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 50px;
@@ -26,7 +31,6 @@
     color: #36a598;
     /* background-color: yellow; */
 }
-
 .email {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18px;
@@ -37,7 +41,6 @@
     letter-spacing: normal;
     color: #505050;
 }
-
 .leftTutor {
     width: 42.9166667%;
     min-height: 100vh;
@@ -45,7 +48,6 @@
     background-color: rgba(245, 154, 77, 0.15);
     float: left;
 }
-
 .tutorThanks {
     font-family: apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 48px;
@@ -57,4 +59,22 @@
     color: #e88939;
     /* background-color: yellow;
     word-break: break-all; */
+}
+#second {
+    display: none;
+}
+.form-group select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #7B1FA2;
+}
+.custom-control-input:checked~.custom-control-label.red::before {
+    background-color: red;
+}
+.custom-control-input:checked~.custom-control-label.green::before {
+    background-color: green;
 }

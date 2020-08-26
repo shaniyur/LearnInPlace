@@ -42,8 +42,16 @@ app.get('/css/home.css', function(req, resp) {
     resp.sendFile('newhome.css', { root: path.join(__dirname, '../css') });
 })
 
+app.get('/css/studentthankyou.css', function(req, resp) {
+    resp.sendFile('studentthankyou.css', { root: path.join(__dirname, '../css') });
+})
+
 app.get('/css/images/5SCENE.svg', function(req, resp) {
     resp.sendFile('5SCENE.svg', { root: path.join(__dirname, '../css/images') });
+})
+
+app.get('/css/images/Student_Studying_Scene.svg', function(req, resp) {
+    resp.sendFile('Student_Studying_Scene.svg', { root: path.join(__dirname, '../css/images') });
 })
 
 app.get('/css/images/student.svg', function(req, resp) {

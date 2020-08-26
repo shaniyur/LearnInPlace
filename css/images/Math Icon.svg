@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="69px" viewBox="0 0 65 69" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>triangle-ruler</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Tutor-Sign-up-Page-" transform="translate(-801.000000, -54.000000)">
+            <g id="subject" transform="translate(760.000000, 51.000000)">
+                <g id="Name-Textbox">
+                    <g id="subject" transform="translate(0.000000, 4.000000)">
+                        <g id="Group-4">
+                            <g id="triangle-ruler" transform="translate(42.000000, 0.000000)">
+                                <polygon id="Path" fill="#FADB93" fill-rule="nonzero" opacity="0.57" points="64 55.559657 29.3564601 68 5 2"></polygon>
+                                <polygon id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round" points="24.3564601 66 0 0 59 53.5500654"></polygon>
+                                <polygon id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round" points="41 50.4775576 28.6657497 55 20 31"></polygon>
+                                <path d="M6,15 L9,13" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M6,18 L9,16" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M8,21 L11,19" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M9,24 L12,22" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M10,28 L13,26" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M11,31 L14,29" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M13,34 L16,32" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M13,37 L16,35" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M15,40 L18,38" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M16,43 L19,41" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M17,46 L20,44" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M18,49 L21,47" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M19,53 L22,51" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M20,56 L23,54" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M21,59 L24,57" id="Path" stroke="#000000" stroke-width="0.41" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
