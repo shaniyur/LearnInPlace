@@ -38,6 +38,10 @@ app.get('/finalpage', function(req, resp) {
     resp.sendFile('studentthankyou.html', { root: path.join(__dirname, "../views") });
 })
 
+app.get('/comingsoon', function(req, resp) {
+    resp.sendFile('Comingsoon.html', { root: path.join(__dirname, '../views') });
+})
+
 app.get('/css/home.css', function(req, resp) {
     resp.sendFile('newhome.css', { root: path.join(__dirname, '../css') });
 })
