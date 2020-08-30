@@ -5,241 +5,272 @@
     <meta charset="utf-8">
     <title>Tutor Signup Page</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="\css\tutor_signup.css">
 </head>
 
-<body style="color: rgb(8, 146, 100);background-color:whitesmoke">
-    <p>Tutor Signups</p>
-    <form id="tutorsignups" action="/api/tutor/register" enctype="multipart/form-data" method="post">
-        <!-- <form id="tutorsignups" action="./tutorthankyou.html" enctype="multipart/form-data" method="post"> -->
-        <ul>
-            <p>
-                <label for="first_name">First Name:</label>
-                <input type="text" id="first_name" name="first_tutor_name" required>
-            </p>
-            <p>
-                <label for="last_name">Last Name:</label>
-                <input type="text" id="last_name" name="last_tutor_name" required>
-            </p>
-            <p>
-                <label for="mail">E-mail:</label>
-                <input type="email" id="mail" name="tutor_email" required placeholder="Enter a valid email">
-            </p>
-            <p>
-                <fieldset>
-                    <legend>Gender:</legend>
-                    <ul>
-                        <li>
-                            <label for="gender1">
-							<input type="radio" id="gender1" name="gender" value="M" required>
-							Male
+<body style="font-family: apple-system, BlinkMacSystemFont, sans-serif; color:#505050;">
+    <div class="leftTutor sticky-top">
+        <nav class="navbar navbar-expand-sm navbar-light p-5">
+            <a class="navbar-brand" href="#">
+                <span class="mb-0 h2" style="color: #e88939; font-weight: bold; font-family: apple-system, BlinkMacSystemFont, sans-serif;">Learning </span>
+                <span class="mb-0 h2" style="color: #7b7b7b;; font-weight: bold; font-family: apple-system, BlinkMacSystemFont, sans-serif;">Alliances</span></a>
+        </nav>
+        <div class="text-center">
+            <img src="\css\images\TUTOR_SIGN_UP_SCENE.svg" class="img-fluid w-75 pt-3" alt="Responsive image ">
+        </div>
+    </div>
+
+    <div class="rightRectangle d-flex align-items-center justify-content-center">
+        <form id="tutorsignups" action="/api/tutor/register" enctype="multipart/form-data" method="post">
+            <span class="pt-5 mt-5 mb-4 d-flex align-items-center justify-content-center h2" style="color: #e88939; font-weight: bold; font-family: Helvetica;">Tutor Sign Up </span>
+            <div id="first">
+                <div class="form-group">
+                    <p><label> What is your name?</label></p>
+                    <div class="form-inline">
+                        <input class="form-control pt-2 pb-2 mr-4" type="text" id="first_name" name="first_tutor_name" placeholder="First name" required>
+                        <input class="form-control pt-2 pb-2" type="text" id="last_name" name="last_tutor_name" placeholder="Last name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <label for="mail">Email Address</label><br>
+                        <input class="form-control pt-2 pb-2" type="email" id="mail" name="tutor_email" required>
+                    </p>
+                </div>
+                <div class="form-group form-inline">
+                    <br>
+                    <label>Gender</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                                <label class="btn btn-outline-primary m-2 rounded" for="gender1">
+                                <input class="form-check-input" type="radio" id="gender1" name="gender" value="M" required> Male
+                                </label>
+
+                                <label class="btn btn-outline-primary m-2 rounded" for="gender2">
+							    <input class="form-check-input" type="radio" id="gender2" name="gender" value="F">Female
+						        </label>
+
+                                <label class="btn btn-outline-primary m-2 rounded" for="gender3">
+							    <input class="form-check-input" type="radio" id="gender3" name="gender" value="NA"> Other
+						        </label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="school">What is the name of your school?</label>
+                    <input class="form-control pt-2 pb-2" type="text" id="school" name="tutor_school" required>
+                </div>
+
+                <div class="form-check-inline">
+                    <p>
+
+                        <legend class="col-form-label">What grade will you be attending?</legend>
+
+                        <label for="grade1">
+					    <input class="form-check-input" type="radio" id="grade1" name="grade" value="9" required>9th
+				        </label>
+
+                        <label for="grade2">
+					    <input class="form-check-input" type="radio" id="grade2" name="grade" value="10">10th
+					    </label>
+
+                        <label for="grade3">
+					    <input class="form-check-input" type="radio" id="grade3" name="grade" value="11">11th
+					    </label>
+
+                        <label for="grade4">
+					    <input class="form-check-input" type="radio" id="grade4" name="grade" value="12">12th
+					    </label>
+
+                        <label for="grade5">
+					    <input class="form-check-input" type="radio" id="grade5" name="grade" value="">Other:
+					    <input class="form-check-input" type="text" name="other_grade">
+					    </label>
+
+                    </p>
+                </div>
+                <p>
+                    <div class="text-center">
+                        <button id="next" type="button" class="btn pl-5 pr-5 next">Next</button>
+                    </div>
+                </p>
+            </div>
+            <!-- start of second page -->
+            <div id="second">
+                <div class="form-check-inline">
+                    <p>
+                        <legend class="col-form-label">Which subjects can you provide tutoring in?</legend>
+                        <input class="form-check-input " type="checkbox" id="subj1" name="subj" value="english">
+                        <label class="icon" for="subj1">
+                            <img src="\css\images\English_Icon.svg" />
+                            English
 						</label>
-                        </li>
-                        <li>
-                            <label for="gender2">
-							<input type="radio" id="gender2" name="gender" value="F">
-							Female
+                        <input class="form-check-input " type="checkbox" id="subj2" name="subj" value="math">
+                        <label class="icon" for="subj2">
+                            <img src= "\css\images\Math_Icon.svg"/>
+                            Math
 						</label>
-                        </li>
-                        <li>
-                            <label for="gender3">
-							<input type="radio" id="gender3" name="gender" value="NA">
-							I'd prefer not to answer
-						</label>
-                        </li>
-                    </ul>
-                </fieldset>
-            </p>
-            <p>
-                <label for="school">School Name:</label>
-                <input type="text" id="school" name="tutor_school" required>
-            </p>
-            <p>
-                <fieldset>
-                    <legend>Which grade will you be attending in fall 2020?:</legend>
-                    <ul>
-                        <li>
-                            <label for="grade1">
-							<input type="radio" id="grade1" name="grade" value="9" required>
-							9th
-						</label>
-                        </li>
-                        <li>
-                            <label for="grade2">
-							<input type="radio" id="grade2" name="grade" value="10">
-							10th
-						</label>
-                        </li>
-                        <li>
-                            <label for="grade3">
-							<input type="radio" id="grade3" name="grade" value="11">
-							11th
-						</label>
-                        </li>
-                        <li>
-                            <label for="grade4">
-							<input type="radio" id="grade4" name="grade" value="12">
-							12th
-						</label>
-                        </li>
-                        <li>
-                            <label for="grade5">
-							<input type="radio" id="grade5" name="grade" value="">
-							Other:
-							<input type="text" name="other_grade">
-						</label>
-                        </li>
-                    </ul>
-                </fieldset>
-            </p>
-            <p>
-                <fieldset>
-                    <legend>Which subjects can you provide tutoring in?:</legend>
-                    <div>
-                        <ul>
-                            <li>
-                                <label for="subj1">
-							<input type="checkbox" id="subj1" name="subj" value="english">
-							English
-						</label>
-                            </li>
-                            <li>
-                                <label for="subj2">
-							<input type="checkbox" id="subj2" name="subj" value="math">
-							Math
-						</label>
-                            </li>
-                            <li>
-                                <label for="subj3">
-							<input type="checkbox" id="subj3" name="subj" value="science">
-							Science
-						</label>
-                            </li>
-                            <li>
-                                <label for="subj4">
-							<input type="checkbox" id="subj4" name="subj" value="">
+                        <input class="form-check-input " type="checkbox" id="subj3" name="subj" value="science">
+                        <label class="icon" for="subj3"></label>
+                        <img src="\css\images\Science_Icon.svg" /> Science
+                        </label>
+                        <!-- <label for="subj4">
+							<input class="form-check-input " type="checkbox" id="subj4" name="subj" value="">
 							Other:
 							<input type="text" name="other_subj">
-						</label>
-                            </li>
-                        </ul>
+						</label> -->
+                    </p>
+                </div>
+                <div class="form-group">
+                    <div class="form-check-inline">
+                        <p>
+                            <legend class="col-form-label pr-2" for="exp">
+                                Do you have tutoring experience before?
+                            </legend>
+                        </p>
+                        <label> <input class="form-check-input" type="radio" name="tutor_exp" id="exp" value="yes" required>Yes</label>
+                        <label> <input class="form-check-input" type="radio" name="tutor_exp" id="exp" value="no" required>No</label>
                     </div>
-                </fieldset>
-            </p>
-            <p>
-                <label for="exp">
-					<span>Do you have tutoring experience before?:</span>
-				</label>
-                <select id="exp" name="tutor_exp" required>
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
-				</select>
-            </p>
-            <p>
-                <label for="transcipt">Please upload your transcript. You can black out everything except name, courses that you want to teach and grade</label>
-                <input type="file" id="transcript" name="transcript" accept="application/pdf" title="Only pdfs are allowed" required>
-            </p>
-            <p>
-                <label for="cv">Please upload your CV</label>
-                <input type="file" id="cv" name="cv" accept="application/pdf" title="Only pdfs are allowed" required>
-            </p>
-            <p>
-                <label for="avail">How many hours do you want to tutor in a week:</label>
-                <input type="text" name="avail" id="tutor_avail" required>
-            </p>
-            <p>
-                <fieldset>
-                    <legend>Do you want to so short or long term coaching?:</legend>
-                    <ul>
-                        <li>
-                            <label for="duration1">
-							<input type="radio" id="duration1" name="duration" value="1-3" required>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend form-inline">
+                            <label class="mr-2" id="inputGroupFileAddon01" for="transcipt">Please upload your transcript</label>
+                        </div>
+                        <div class="custom-file pt-2 pb-2">
+                            <input class="custom-file-input" type="file" accept="application/pdf" name="transcript" required aria-describedby="inputGroupFileAddon01" id="transcript" onchange="loadFile(event)" required>
+                            <label class="custom-file-label"></label>
+                        </div>
+                        <script>
+                            document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+                                var fileName = document.getElementById("transcript").files[0].name;
+                                var nextSibling = e.target.nextElementSibling
+                                nextSibling.innerText = fileName
+                            })
+                        </script>
+                        <!-- <p class="form-control-plaintext">
+                            *You can black out everything except name, courses that you want to teach and grade. Only pdfs are allowed.
+                        </p> -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend form-inline">
+                            <label class="mr-2" id="inputGroupFileAddon02" for="cv">Please upload your CV</label>
+                        </div>
+                        <div class="custom-file pt-2 pb-2">
+                            <input class="custom-file-input" type="file" accept="application/pdf" name="cv" required aria-describedby="inputGroupFileAddon02" id="cv" required>
+                            <label class="custom-file-label"></label>
+                        </div>
+                        <script>
+                            document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+                                var fileName = document.getElementById("cv").files[0].name;
+                                var nextSibling = e.target.nextElementSibling
+                                nextSibling.innerText = fileName
+                            })
+                        </script>
+                    </div>
+                </div>
+
+                <div class="form-group form-inline">
+                    <label class="mr-2" for="avail">How many hours do you want to tutor in a week:</label>
+                    <input class="form-control pt-2 pb-2" type="text" name="avail" id="tutor_avail" required>
+                </div>
+
+
+                <div class="form-check-inline">
+                    <p>
+                        <legend class="col-form-label">Do you want to do short or long term coaching?</legend>
+
+                        <label for="duration1">
+							<input class="form-check-input" type="radio" id="duration1" name="duration" value="1-3" required>
 							1-3 months
 						</label>
-                        </li>
-                        <li>
-                            <label for="duration2">
-							<input type="radio" id="duration2" name="duration" value="3-6">
+
+                        <label for="duration2">
+							<input class="form-check-input" type="radio" id="duration2" name="duration" value="3-6">
 							3-6 months
 						</label>
-                        </li>
-                        <li>
-                            <label for="duration3">
-							<input type="radio" id="duration3" name="duration" value="6-12">
+
+                        <label for="duration3">
+							<input class="form-check-input" type="radio" id="duration3" name="duration" value="6-12">
 							6-12 months
 						</label>
-                        </li>
-                        <li>
-                            <label for="duration4">
-							<input type="radio" id="duration4" name="duration" value="12+">
+
+                        <label for="duration4">
+							<input class="form-check-input" type="radio" id="duration4" name="duration" value="12+">
 							12+ months
 						</label>
-                        </li>
+                    </p>
+                </div>
 
-                    </ul>
-                </fieldset>
-            </p>
-            <p>
-                <fieldset>
-                    <legend>How many students are you open to tutoring at a time?:</legend>
-                    <ul>
-                        <li>
+                <div class="form-group">
+                    <div class="form-check-inline">
+                        <p>
+                            <legend class="col-form-label">How many students are you open to tutoring at a time?</legend>
                             <label for="pref1">
-							<input type="radio" id="pref1" name="pref" value="1" required>
+							<input class="form-check-input" type="radio" id="pref1" name="pref" value="1" required>
 							1 student
 						</label>
-                        </li>
-                        <li>
+
                             <label for="pref2">
-							<input type="radio" id="pref2" name="pref" value="2-3">
-							2-3
+							<input class="form-check-input" type="radio" id="pref2" name="pref" value="2-3">
+							2-3 students
 						</label>
-                        </li>
-                        <li>
+
                             <label for="pref3">
-							<input type="radio" id="pref3" name="pref" value="none">
+							<input class="form-check-input" type="radio" id="pref3" name="pref" value="none">
 							I only care about the total number of sessions I teach
 						</label>
-                        </li>
-                    </ul>
-                </fieldset>
-            </p>
-            <p>
-                <fieldset>
-                    <legend>Why do you want to tutor?:</legend>
-                    <div>
-                        <ul>
-                            <li>
-                                <label for="motive1">
-							<input type="checkbox" id="motive1" name="motive" value="hours">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <legend class="col-form-label">Why do you want to tutor?</legend>
+                    <div class="form-check">
+                        <label for="motive1">
+							<input class="form-check-input" type="checkbox" id="motive1" name="motive" value="hours">
 							Gain communitity service hours
 						</label>
-                            </li>
-                            <li>
-                                <label for="motive2">
-							<input type="checkbox" id="motive2" name="motive" value="communicate">
+                    </div>
+                    <div class="form-check">
+                        <label for="motive2">
+							<input class="form-check-input" type="checkbox" id="motive2" name="motive" value="communicate">
 							Improve communication skills
 						</label>
-                            </li>
-                            <li>
-                                <label for="motive3">
-							<input type="checkbox" id="motive3" name="motive" value="">
-							Other:
-							<input type="text" id="motive3" name="motive">
-						</label>
-                            </li>
-                        </ul>
                     </div>
-                </fieldset>
-            </p>
-            <p>
-                <label for="msg">Anything else you would like to share with us?:</label>
-                <textarea name="tutor_message" id="msg" cols="30" rows="10"></textarea>
-            </p>
-            <p class="button">
-                <button type="submit">Submit</button>
-            </p>
-        </ul>
-    </form>
+                    <!-- <div class="form-check">
+                            <label for="motive3">
+							<input class="form-check-input" type="checkbox" id="motive3" name="motive" value="">
+							Other:
+							<input class="form-check-input" type="text" id="motive3" name="motive">
+                        </label>
+                        </div> -->
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        <label class="col-form-label" for="msg">Anything else you would like to share with us?</label>
+                        <textarea class="form-control" name="tutor_message" id="msg" cols="30" rows="10"></textarea>
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <p>
+                        <button class="btn pl-5 pr-5 next" type="submit">Submit</button>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
 
     <!-- script to check at least one checkbox is checked -->
     <script>
@@ -279,7 +310,14 @@
     <!-- script to render to a json -->
     <script src="/tutor/renderform">
     </script>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#next').click(function() {
+                $('#second').show();
+                $('#first').hide();
+            })
+        })
+    </script>
 </body>
 
 </html>

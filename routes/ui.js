@@ -30,12 +30,12 @@ app.get('/tutor/renderform', function(req, resp) {
 
 app.get('/thankyou', function(req, resp) {
     console.log("tutor thankyou sent")
-    resp.sendFile('tutorthankyou.html', { root: path.join(__dirname, "../views") });
+    resp.sendFile('tutorthanks.html', { root: path.join(__dirname, "../views") });
 })
 
 app.get('/finalpage', function(req, resp) {
     console.log("student thankyou sent")
-    resp.sendFile('finalpage.html', { root: path.join(__dirname, "../views") });
+    resp.sendFile('studentthankyou.html', { root: path.join(__dirname, "../views") });
 })
 
 app.get('/css/home.css', function(req, resp) {
@@ -44,6 +44,14 @@ app.get('/css/home.css', function(req, resp) {
 
 app.get('/css/studentthankyou.css', function(req, resp) {
     resp.sendFile('studentthankyou.css', { root: path.join(__dirname, '../css') });
+})
+
+app.get('/css/studentthanks.css', function(req, resp) {
+    resp.sendFile('studentthanks.css', { root: path.join(__dirname, '../css') });
+})
+
+app.get('/css/tutor_signup.css', function(req, resp) {
+    resp.sendFile('tutor_signup.css', { root: path.join(__dirname, '../css') });
 })
 
 app.get('/css/images/5SCENE.svg', function(req, resp) {
@@ -64,6 +72,20 @@ app.get('/css/images/connect.svg', function(req, resp) {
 
 app.get('/css/images/confirm.svg', function(req, resp) {
     resp.sendFile('confirm.svg', { root: path.join(__dirname, '../css/images') });
+})
+app.get('/css/images/English_Icon.svg', function(req, resp) {
+    resp.sendFile('English_Icon.svg', { root: path.join(__dirname, '../css/images') });
+})
+app.get('/css/images/TUTOR_SIGN_UP_SCENE.svg', function(req, resp) {
+    resp.sendFile('TUTOR_SIGN_UP_SCENE.svg', { root: path.join(__dirname, '../css/images') });
+})
+
+app.get('/css/images/Math_Icon.svg', function(req, resp) {
+    resp.sendFile('Math_Icon.svg', { root: path.join(__dirname, '../css/images') });
+})
+
+app.get('/css/images/Science_Icon.svg', function(req, resp) {
+    resp.sendFile('Science_Icon.svg', { root: path.join(__dirname, '../css/images') });
 })
 
 app.get('/countrystatecity', function(req, resp) {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Thank You!</title>
+    <title>Student Sign Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="\css\studentthankyou.css">
 </head>
@@ -29,7 +29,6 @@
             <span class="pt-5 mt-5 mb-4 d-flex align-items-center justify-content-center h2" style="color: #36a598; font-weight: bold; font-family: Helvetica;">Student Sign Up </span>
             <div id="first">
                 <div class="form-group">
-
                     <p><label> What is your name?</label></p>
                     <div class="form-inline">
                         <input class="form-control pt-2 pb-2 mr-4" type="textbox" name="firstName" pattern="[a-zA-Z]*" placeholder="First name" required>
@@ -61,7 +60,7 @@
 
                 <div class="form-group form-inline">
                     <br>
-                    <label class="col-sm-2 pt-2">Gender</label>
+                    <label>Gender</label>
                     <div class="col-sm-10">
                         <div class="form-check form-check-inline">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -86,6 +85,7 @@
                     <label>What is the name of your school?</label>
                     <input class="form-control pt-2 pb-2" type="textbox" name="school" id="school" pattern="[a-zA-Z]*" />
                 </div>
+
                 <div class="form-check-inline">
                     <p>
                         <legend class="col-form-label">What grade will you be attending?</legend>
@@ -94,9 +94,10 @@
                         <label> <input class="form-check-input" type="radio" name="grade" id="grade" value="8" required>8th Grade </label>
                     </p>
                 </div>
+
                 <p>
                     <div class="text-center">
-                        <button id="next" type="button" class="btn">Next</button>
+                        <button id="next" type="button" class="btn next">Next</button>
                     </div>
                 </p>
             </div>
@@ -105,9 +106,9 @@
                 <div class="form-check-inline">
                     <p>
                         <legend class="col-form-label">What subjects do you need tutoring in?</legend>
-                        <label> <input class="form-check-input" type="checkbox" name="subjects" value="English">English</label>
-                        <label> <input class="form-check-input" type="checkbox" name="subjects" value="Math">Math</label>
-                        <label> <input class="form-check-input" type="checkbox" name="subjects" value="Science">Science </label>
+                        <input class="form-check-input " id="myCheckbox1" type="checkbox" name="subjects" value="English"><label class="icon"><img src="\css\images\English_Icon.svg" /> English</label>
+                        <input class="form-check-input " id="myCheckbox1" type="checkbox" name="subjects" value="Math"><label class="icon"><img src= "\css\images\Math_Icon.svg"/> Math</label>
+                        <input class="form-check-input " id="myCheckbox1" type="checkbox" name="subjects" value="Science"><label class="icon"><img  src= "\css\images\Science_Icon.svg"/>Science </label>
                         <script>
                             ('.subjects').change(function() {
                                 if (this.checked) {
@@ -187,8 +188,15 @@
                         </div>
                         <div class="custom-file pt-2 pb-2">
                             <input class="custom-file-input" type="file" accept="image/*" name="prodImage" aria-describedby="inputGroupFileAddon01" id="file" onchange="loadFile(event)" required>
-                            <label class="custom-file-label">Choose file</label>
+                            <label class="custom-file-label"></label>
                         </div>
+                        <script>
+                            document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+                                var fileName = document.getElementById("file").files[0].name;
+                                var nextSibling = e.target.nextElementSibling
+                                nextSibling.innerText = fileName
+                            })
+                        </script>
                     </div>
                 </div>
 

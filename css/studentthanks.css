@@ -1,0 +1,58 @@
+.leftRectangle {
+    width: 42.9166667%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: rgba(54, 165, 152, 0.15);
+    float: left;
+}
+
+.rightRectangle {
+    width: 57.0833333%;
+    float: right;
+    min-height: 100vh;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.thanks {
+    font-family: apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #36a598;
+}
+
+.email {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #505050;
+}
+
+.leftTutor {
+    width: 42.9166667%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: rgba(245, 154, 77, 0.15);
+    float: left;
+}
+
+.tutorThanks {
+    font-family: apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #e88939;
+    /* background-color: yellow;
+    word-break: break-all; */
+}
