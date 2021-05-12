@@ -36,7 +36,7 @@
     "multer-gridfs-storage": "^4.2.0",
     "node": "^14.5.0",
     "node-localstorage": "^2.1.6",
-    "nodemailer": "^6.4.11",
+    "nodemailer": "^6.4.16",
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^2.0.4",
     "oauth": "^0.9.15",
